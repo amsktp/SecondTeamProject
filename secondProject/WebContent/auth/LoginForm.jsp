@@ -4,6 +4,12 @@
 <html>
 <head>
 <title>로그인</title>
+<script type="text/javascript">
+	function moveAddPageFnc() {
+		location.href = '../member/add';
+	}
+
+</script>
 
 </head>
 
@@ -13,6 +19,8 @@
 		이메일: 	<input type="text" name="email"><br>
 		암호: 	<input type="password" name="password"><br>
 				<input type="submit" value="로그인">
+				<input onclick="moveAddPageFnc();" type="button" value="회원가입">
 	</form>
+	
 </body>
 </html>
