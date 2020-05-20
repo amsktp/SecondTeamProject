@@ -10,6 +10,7 @@ public class MemberDto {
 	private String password;
 	private Date createDate;
 	private Date modifiedDate;
+	private String adminCheck;
 	
 	public MemberDto() {
 		super();
@@ -35,6 +36,19 @@ public class MemberDto {
 		this.modifiedDate = modifiedDate;
 	}
 
+
+	public MemberDto(int no, String name, String email, String password, Date createDate, Date modifiedDate,
+			String adminCheck) {
+		super();
+		this.no = no;
+		this.name = name;
+		this.email = email;
+		this.password = password;
+		this.createDate = createDate;
+		this.modifiedDate = modifiedDate;
+		this.adminCheck = adminCheck;
+	}
+	
 
 
 	public int getNo() {
@@ -85,12 +99,21 @@ public class MemberDto {
 		this.modifiedDate = modifiedDate;
 	}
 
-	@Override
-	public String toString() {
-		return "MemberDto [no=" + no + ", name=" + name 
-				+ ", email=" + email + ", password=" + password
-				+ ", createDate=" + createDate 
-				+ ", modifiedDate=" + modifiedDate + "]";
+
+	public String getAdminCheck() {
+		return adminCheck;
+	}
+
+	public void setAdminCheck(String adminCheck) {
+		this.adminCheck = adminCheck;
 	}
 	
+	@Override
+	public String toString() {
+		return "MemberDto [no=" + no + ", name=" + name + ", email=" + email + ", password=" + password
+				+ ", createDate=" + createDate + ", modifiedDate=" + modifiedDate + ", adminCheck=" + adminCheck + "]";
+	}
+
+
+
 }
