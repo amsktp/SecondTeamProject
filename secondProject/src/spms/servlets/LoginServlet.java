@@ -56,7 +56,7 @@ public class LoginServlet extends HttpServlet {
 			sql += "SELECT MNAME, EMAIL";
 			sql += " FROM MEMBER";
 			sql += " WHERE EMAIL = ?";
-			sql += " AND PWD = ?";
+			sql += " AND password = ?";
 
 			pstmt = conn.prepareStatement(sql);
 			
