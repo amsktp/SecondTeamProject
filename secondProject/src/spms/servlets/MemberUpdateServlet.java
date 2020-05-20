@@ -24,79 +24,79 @@ import spms.dto.MemberDto;
 @WebServlet(urlPatterns = { "/member/update" })
 public class MemberUpdateServlet extends HttpServlet {
 
-	@Override
-	protected void doGet(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
+   @Override
+   protected void doGet(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
 
-		Connection conn = null;
+      Connection conn = null;
 
-		RequestDispatcher rd = null;
+      RequestDispatcher rd = null;
 
-		int no = Integer.parseInt(req.getParameter("no"));
-		ServletContext sc = this.getServletContext();
-		conn = (Connection) sc.getAttribute("conn");
-		MemberDao memberDao = new MemberDao();
-		memberDao.setConnection(conn);
+      int no = Integer.parseInt(req.getParameter("no"));
+      ServletContext sc = this.getServletContext();
+      conn = (Connection) sc.getAttribute("conn");
+      MemberDao memberDao = new MemberDao();
+      memberDao.setConnection(conn);
 
-		try {
+      try {
 
-			MemberDto memberDto = memberDao.memberSelectOne(no);
+         MemberDto memberDto = memberDao.memberSelectOne(no);
 
-			req.setAttribute("memberDto", memberDto);
+         req.setAttribute("memberDto", memberDto);
 
-			rd = req.getRequestDispatcher("./MemberUpdateForm.jsp");
+         rd = req.getRequestDispatcher("./MemberUpdateForm.jsp");
 
-			rd.forward(req, res);
+         rd.forward(req, res);
 
-		} catch (Exception e) {
-			e.printStackTrace();
+      } catch (Exception e) {
+         e.printStackTrace();
 
-			req.setAttribute("error", e);
-			rd = req.getRequestDispatcher("/Error.jsp");
-			rd.forward(req, res);
+         req.setAttribute("error", e);
+         rd = req.getRequestDispatcher("/Error.jsp");
+         rd.forward(req, res);
 
-		}
+      }
 
-	} // doGet end
+   } // doGet end
 
-	@Override
-	protected void doPost(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
-		// TODO Auto-generated method stub
+   @Override
+   protected void doPost(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
+      // TODO Auto-generated method stub
 
-		Connection conn = null;
+      Connection conn = null;
 
-		String email = req.getParameter("email");
-		String name = req.getParameter("name");
-		int no = Integer.parseInt(req.getParameter("no"));
+      String email = req.getParameter("email");
+      String name = req.getParameter("name");
+      int no = Integer.parseInt(req.getParameter("no"));
 
-		ServletContext sc = this.getServletContext();
-		conn = (Connection) sc.getAttribute("conn");
+      ServletContext sc = this.getServletContext();
+      conn = (Connection) sc.getAttribute("conn");
 
-		MemberDto memberDto = new MemberDto();
+      MemberDto memberDto = new MemberDto();
 
-		memberDto.setEmail(email);
-		memberDto.setName(name);
-		memberDto.setNo(no);
+      memberDto.setEmail(email);
+      memberDto.setName(name);
+      memberDto.setNo(no);
 
-		MemberDao memberDao = new MemberDao();
-		memberDao.setConnection(conn);
+      MemberDao memberDao = new MemberDao();
+      memberDao.setConnection(conn);
 
-		try {
+      try {
 
-			int result = 0;
+         int result = 0;
 
-			result = memberDao.memberUpdate(memberDto);
+         result = memberDao.memberUpdate(memberDto);
 
-			if (result == 0) {
-				System.out.println("업데이트 실패");
-			}
+         if (result == 0) {
+            System.out.println("업데이트 실패");
+         }
 
-			res.sendRedirect("./list");
+         res.sendRedirect("./list");
 //
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+      } catch (Exception e) {
+         // TODO Auto-generated catch block
+         e.printStackTrace();
+      }
 
-	}
+   }
 
 }

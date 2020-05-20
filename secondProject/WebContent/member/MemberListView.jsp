@@ -23,6 +23,9 @@
 		${memberDto.createDate}
 		<a href='./delete?no=${memberDto.no}'>[삭제]</a><br>
 	</c:forEach>
+	
+	<a href="../board1/list">게시판</a>
+	
 	<jsp:include page="/Tail.jsp" />
 </body>
 </html>
