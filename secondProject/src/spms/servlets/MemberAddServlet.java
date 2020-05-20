@@ -14,6 +14,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import spms.dao.MemberDao;
 import spms.dto.MemberDto;
@@ -24,7 +25,7 @@ public class MemberAddServlet extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		res.sendRedirect("../member/MemberAddForm.jsp");
+		res.sendRedirect("../member/MemberForm.jsp");
 	}
 
 	@Override
@@ -59,7 +60,16 @@ public class MemberAddServlet extends HttpServlet {
 				System.out.println("회원가입~~~~~ 실패!");
 			}
 			
-			res.sendRedirect("./list");
+			
+			HttpSession session = req.getSession();
+			
+			if(session.getAttribute("memberDto") == null) {
+				res.sendRedirect("../auth/login");
+			} else {
+				res.sendRedirect("./list");
+				
+			}
+			
 
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
