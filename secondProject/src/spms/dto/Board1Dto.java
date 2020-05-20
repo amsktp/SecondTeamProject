@@ -2,7 +2,7 @@ package spms.dto;
 
 import java.util.Date;
 
-public class BoardDto {
+public class Board1Dto {
 
 	private int no;
 	private String title;
@@ -10,11 +10,19 @@ public class BoardDto {
 	private String contents;
 	private Date writeDate;
 	
-	public BoardDto() {
+	public Board1Dto() {
 		super();
 	}
 
-	public BoardDto(int no, String title, String writer, String contents, Date writeDate) {
+	public Board1Dto(int no, String title, String writer, Date writeDate) {
+		super();
+		this.no = no;
+		this.title = title;
+		this.writer = writer;
+		this.writeDate = writeDate;
+	}
+
+	public Board1Dto(int no, String title, String writer, String contents, Date writeDate) {
 		super();
 		this.no = no;
 		this.title = title;

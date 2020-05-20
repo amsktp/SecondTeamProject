@@ -18,7 +18,11 @@
 <body>
 
 	<p onclick="listPageMoveFnc();">
+<<<<<<< HEAD
 		파이팅!파이팅!파이팅!파이팅!
+=======
+		파이팅파이팅
+>>>>>>> branch 'master' of https://github.com/amsktp/SecondTeamProject.git
 	</p>
 
 </body>

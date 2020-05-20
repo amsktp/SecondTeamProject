@@ -38,6 +38,7 @@ a {
 		${memberDto.createDate}
 		<a href='./delete?no=${memberDto.no}'>[삭제]</a><br>
 	</c:forEach>
+<<<<<<< HEAD
 	<br>
 	
 	<button>
@@ -49,6 +50,10 @@ a {
 	<button>
 		공지사항
 	</button>
+=======
+	
+	<a href="../board1/list">게시판</a>
+>>>>>>> branch 'master' of https://github.com/amsktp/SecondTeamProject.git
 	
 	<jsp:include page="/Tail.jsp" />
 </body>
