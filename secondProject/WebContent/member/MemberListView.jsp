@@ -49,10 +49,11 @@ a {
 	<button>
 		게시판2
 	</button>
-	<button>
-		공지사항
-	</button>
-	
+	<a href="../notice/update">
+		<button>
+			공지사항
+		</button>
+	</a>
 	<jsp:include page="/Tail.jsp" />
 </body>
 </html>

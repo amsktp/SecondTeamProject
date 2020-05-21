@@ -13,7 +13,7 @@
 
 	<div>
 		<div>
-			<input type="b">
+			
 		</div>
 		
 		<div>
