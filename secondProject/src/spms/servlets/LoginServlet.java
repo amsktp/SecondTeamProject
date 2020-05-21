@@ -15,6 +15,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import spms.dao.MemberDao;
 import spms.dto.MemberDto;
 
 @WebServlet(value = "/auth/login")
@@ -39,11 +40,6 @@ public class LoginServlet extends HttpServlet {
 
 		// 데이터베이스 관련 객체 변수 선언
 		Connection conn = null; // 연결
-		PreparedStatement pstmt = null; // 상태
-		ResultSet rs = null; // 결과
-
-		String sql = "";
-		int colIndex = 1;
 		
 		try {
 			ServletContext sc = this.getServletContext();
@@ -52,68 +48,40 @@ public class LoginServlet extends HttpServlet {
 			
 			String email = req.getParameter("email");
 			String pwd = req.getParameter("password");
-			String name = "";
 			
-			sql += "SELECT MNAME, EMAIL, ADMIN_CHECK";
-			sql += " FROM MEMBER";
-			sql += " WHERE EMAIL = ?";
-			sql += " AND PASSWORD = ?";
-
-			pstmt = conn.prepareStatement(sql);
+			MemberDto memberDto = new MemberDto();
+			memberDto.setEmail(email);
+			memberDto.setPassword(pwd);
 			
-			pstmt.setString(colIndex++, email);
-			pstmt.setString(colIndex, pwd);
+			MemberDao memberDao = new MemberDao();
 			
-			rs = pstmt.executeQuery();
+			memberDao.setConnection(conn);
+			memberDto = memberDao.memberLogin(memberDto);
 			
-			// 회원이다
-			if(rs.next()) {
-				email = rs.getString("EMAIL");
-				name = rs.getString("MNAME");
-				String adminCheck = rs.getString("ADMIN_CHECK");
-				
-				MemberDto memberDto = new MemberDto();
-				
-				memberDto.setEmail(email);
-				memberDto.setName(name);
-				memberDto.setAdminCheck(adminCheck);
-				
-				HttpSession session = req.getSession();
-				session.setAttribute("memberDto", memberDto);
-				
-				if(adminCheck.equals("Y")) {
-					res.sendRedirect("../member/list");
-				} else if (adminCheck.equals("Y")) {
-					res.sendRedirect("#");
-				}
-			}else {
+			HttpSession session = req.getSession();
+			session.setAttribute("memberDto", memberDto);
+			
+			
+			if(memberDto == null){
 				RequestDispatcher rd = 
 						req.getRequestDispatcher("./LoginFail.jsp");
 				rd.forward(req, res);
 			}
+
+			String adminCheck = memberDto.getAdminCheck();
+
+			if(adminCheck.equals("Y")) {
+				res.sendRedirect("../member/list");
+			} else if (adminCheck.equals("Y")) {
+				res.sendRedirect("#");
+			}
 			
-		} catch (SQLException e) {
+			
+			
+			
+		} catch (Exception e) {
 			// TODO: handle exception
 			throw new ServletException(e);
-		}finally {
-			if(rs != null) {
-				try {
-					rs.close();
-				}catch (SQLException e) {
-					// TODO: handle exception
-					e.printStackTrace();
-				}
-			}
-			
-			// 상태 해제
-			if(pstmt != null) {
-				try {
-					pstmt.close();
-				} catch (SQLException e) {
-					// TODO: handle exception
-					e.printStackTrace();
-				}
-			}
 		}
 
 	}

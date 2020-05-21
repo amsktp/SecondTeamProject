@@ -8,6 +8,8 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import javax.servlet.ServletException;
+
 import spms.dto.MemberDto;
 
 public class MemberDao {
@@ -259,5 +261,68 @@ public class MemberDao {
 			}
 		}
 		return result;
+	}
+	
+	public MemberDto memberLogin(MemberDto memberDto) throws ServletException {
+		
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		try {
+			int no = 0;
+			String email = memberDto.getEmail();
+			String pwd = memberDto.getPassword();
+			String name = "";
+			String adminCheck = "";
+			
+			String sql = "SELECT MNAME, ADMIN_CHECK, MNO";
+				sql += " FROM MEMBER";
+				sql += " WHERE EMAIL = ?";
+				sql += " AND PASSWORD = ?";
+				
+			pstmt = connection.prepareStatement(sql);
+			
+			pstmt.setString(1, email);
+			pstmt.setString(2, pwd);
+			
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				name = rs.getString("MNAME");
+				adminCheck = rs.getString("ADMIN_CHECK");
+				no = rs.getInt("MNO");
+				
+				memberDto.setEmail(email);
+				memberDto.setName(name);
+				memberDto.setAdminCheck(adminCheck);
+				memberDto.setNo(no);
+				
+				return memberDto;
+			}
+			
+		} catch (SQLException e) {
+			// TODO: handle exception
+			throw new ServletException(e);
+		}finally {
+			if(rs != null) {
+				try {
+					rs.close();
+				}catch (SQLException e) {
+					// TODO: handle exception
+					e.printStackTrace();
+				}
+			}
+			
+			if (pstmt != null) {
+				try {
+					pstmt.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
+		}
+		
+		return null;
+		
 	}
 }

@@ -46,17 +46,14 @@ a {
 		</button>
 	</a>
 	
-<<<<<<< HEAD
+
 	<a href="../board2/list">
 		<button>
 		게시판2
 		</button>
 	</a>
-=======
-	<button>
-		게시판2
-	</button>
->>>>>>> branch 'master' of https://github.com/amsktp/SecondTeamProject.git
+
+
 	<a href="../notice/update">
 		<button>
 			공지사항
