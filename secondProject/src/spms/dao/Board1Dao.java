@@ -30,9 +30,9 @@ public class Board1Dao {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 
-		String sql = "SELECT BNO_1, TITLE_1, WRITER_1, WRITE_DATE_1";
-		sql += " FROM Board_1";
-		sql += " ORDER BY BNO_1 DESC";
+		String sql = "SELECT bno, TITLE, writer, write_date";
+		sql += " FROM first_board";
+		sql += " ORDER BY bno DESC";
 
 		try {
 			pstmt = connection.prepareStatement(sql);
@@ -47,10 +47,10 @@ public class Board1Dao {
 			Date writeDate = null;
 
 			while (rs.next()) {
-				no = rs.getInt("BNO_1");
-				title = rs.getString("TITLE_1");
-				writer = rs.getString("WRITER_1");
-				writeDate = rs.getDate("WRITE_DATE_1");
+				no = rs.getInt("bno");
+				title = rs.getString("TITLE");
+				writer = rs.getString("writer");
+				writeDate = rs.getDate("write_date");
 
 				Board1Dto board1Dto = new Board1Dto(no, title, writer, writeDate);
 
@@ -96,17 +96,19 @@ public class Board1Dao {
 
 			String title = board1Dto.getTitle();
 			String writer = board1Dto.getWriter();
+			String writerEmail = board1Dto.getWriterEmail();
 			String content = board1Dto.getContents();
-
-			String sql = "insert into board_1";
-			sql += " value(BNO_1, TITLE_1, WRITER_1, CONTENTS_1, WRITE_DATE_1)";
-			sql += " values(Board_1_bno_1_seq.nextval, ?, ?, ?, sysdate)";
+			
+			String sql = "insert into first_board";
+			sql += " value(bno, TITLE, writer, writer_email , contents, write_date)";
+			sql += " values(first_board_bno_seq.nextval, ?, ?, ?, ?, sysdate)";
 
 			pstmt = connection.prepareStatement(sql);
 
 			pstmt.setString(1, title);
 			pstmt.setString(2, writer);
-			pstmt.setString(3, content);
+			pstmt.setString(3, writerEmail);
+			pstmt.setString(4, content);
 
 			result = pstmt.executeUpdate();
 
@@ -140,9 +142,9 @@ public class Board1Dao {
 
 		try {
 
-			String sql = "SELECT TITLE_1, WRITER_1, CONTENTS_1, WRITE_DATE_1";
-			sql += " FROM Board_1";
-			sql += " WHERE BNO_1 = ?";
+			String sql = "SELECT TITLE, writer, contents, write_date, writer_email";
+			sql += " FROM first_board";
+			sql += " WHERE bno = ?";
 
 			pstmt = connection.prepareStatement(sql);
 
@@ -155,18 +157,22 @@ public class Board1Dao {
 				String contents = "";
 				String title = "";
 				String writer = "";
+				String writerEmail = "";
 				Date writeDate = null;
 
-				contents = rs.getString("CONTENTS_1");
-				title = rs.getString("TITLE_1");
-				writer = rs.getString("WRITER_1");
-				writeDate = rs.getDate("WRITE_DATE_1");
-
+				
+				contents = rs.getString("contents");
+				title = rs.getString("TITLE");
+				writer = rs.getString("writer");
+				writeDate = rs.getDate("write_date");
+				writerEmail = rs.getString("writer_email");
+				
 				board1Dto.setNo(no);
 				board1Dto.setContents(contents);
 				board1Dto.setTitle(title);
 				board1Dto.setWriteDate(writeDate);
 				board1Dto.setWriter(writer);
+				board1Dto.setWriterEmail(writerEmail);
 				
 			} else {
 				throw new Exception("해당 번호의 회원을 찾을 수 없습니다.");
@@ -209,9 +215,9 @@ public class Board1Dao {
 
 		try {
 
-			String sql = "SELECT TITLE_1, CONTENTS_1";
-			sql += " FROM BOARD_1";
-			sql += " WHERE BNO_1 = ?";
+			String sql = "SELECT TITLE, contents";
+			sql += " FROM first_board";
+			sql += " WHERE bno = ?";
 
 			pstmt = connection.prepareStatement(sql);
 
@@ -224,8 +230,8 @@ public class Board1Dao {
 				String title = "";
 				String contents = "";
 
-				title = rs.getString("TITLE_1");
-				contents = rs.getString("CONTENTS_1");
+				title = rs.getString("TITLE");
+				contents = rs.getString("contents");
 
 				board1Dto.setNo(no);
 				board1Dto.setTitle(title);
@@ -272,9 +278,9 @@ public class Board1Dao {
 			String title = board1Dto.getTitle();
 			String contents = board1Dto.getContents();
 
-			String sql = "UPDATE Board_1";
-			sql += " SET TITLE_1 = ?, CONTENTS_1 =?";
-			sql += " WHERE BNO_1 = ?";
+			String sql = "UPDATE first_board";
+			sql += " SET TITLE = ?, contents =?";
+			sql += " WHERE bno = ?";
 
 			pstmt = connection.prepareStatement(sql);
 
@@ -309,8 +315,8 @@ public class Board1Dao {
 
 		try {
 
-			String sql = "delete FROM Board_1";
-			sql += " where BNO_1 = ?";
+			String sql = "delete FROM first_board";
+			sql += " where bno = ?";
 
 			pstmt = connection.prepareStatement(sql);
 

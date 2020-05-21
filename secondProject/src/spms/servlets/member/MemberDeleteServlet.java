@@ -1,4 +1,4 @@
-package spms.servlets;
+package spms.servlets.member;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -13,8 +13,10 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import spms.dao.MemberDao;
+import spms.dto.MemberDto;
 
 @WebServlet(value = "/member/delete")
 public class MemberDeleteServlet extends HttpServlet {
@@ -27,9 +29,9 @@ public class MemberDeleteServlet extends HttpServlet {
 
 		ServletContext sc = this.getServletContext();
 
-		int mNo = Integer.parseInt(req.getParameter("no"));
+		int no = Integer.parseInt(req.getParameter("no"));
 
-		System.out.println("회원 번호 : " + mNo + " 삭제를 한다");
+		System.out.println("회원 번호 : " + no + " 삭제를 한다");
 		conn = (Connection) sc.getAttribute("conn");
 
 		MemberDao memberDao = new MemberDao();
@@ -39,12 +41,23 @@ public class MemberDeleteServlet extends HttpServlet {
 		try {
 			int result = 0;
 			
-			result = memberDao.memberDelete(mNo);
+			result = memberDao.memberDelete(no);
 
 			if(result == 0) {
 				System.out.println("회원 삭제에 실패 했습니다.");
 			}
-			res.sendRedirect("./list");
+			
+			
+			HttpSession session = req.getSession();
+			MemberDto memberDto = (MemberDto) session.getAttribute("memberDto");
+			
+			if(no == memberDto.getNo()) {
+				session.invalidate();
+				res.sendRedirect(req.getContextPath() + "/auth/login");
+			}else {
+				res.sendRedirect("./list");				
+			}
+			
 
 		} catch (Exception e) {
 			// TODO Auto-generated catch block

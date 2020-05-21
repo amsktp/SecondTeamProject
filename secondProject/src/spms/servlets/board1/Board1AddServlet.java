@@ -1,4 +1,4 @@
-package spms.servlets;
+package spms.servlets.board1;
 
 import java.io.IOException;
 import java.sql.Connection;
@@ -41,12 +41,14 @@ public class Board1AddServlet extends HttpServlet{
 		String title = req.getParameter("title");
 		String content = req.getParameter("content");
 		String writer = memberDto.getName();
+		String writerEmail = memberDto.getEmail();
 		
 		Board1Dto board1Dto = new Board1Dto();
 
 		board1Dto.setTitle(title);
 		board1Dto.setContents(content);
 		board1Dto.setWriter(writer);
+		board1Dto.setWriterEmail(writerEmail);
 
 		ServletContext sc = this.getServletContext();
 

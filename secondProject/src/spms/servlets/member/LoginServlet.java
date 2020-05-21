@@ -1,4 +1,4 @@
-package spms.servlets;
+package spms.servlets.member;
 
 import java.io.IOException;
 import java.sql.Connection;
@@ -70,11 +70,7 @@ public class LoginServlet extends HttpServlet {
 
 			String adminCheck = memberDto.getAdminCheck();
 
-			if(adminCheck.equals("Y")) {
-				res.sendRedirect("../member/list");
-			} else if (adminCheck.equals("Y")) {
-				res.sendRedirect("#");
-			}
+			res.sendRedirect("../member/list");
 			
 			
 			

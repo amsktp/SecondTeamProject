@@ -7,12 +7,27 @@ public class Board2Dto {
 	private int bno2;
 	private String title2;
 	private String writer2;
+	private String writerEmail2;
 	private String contents2;
 	private Date writeDate2;
 	
 	public Board2Dto() {
 		super();
 	}
+	
+	
+
+	public Board2Dto(int bno2, String title2, String writer2, String writerEmail2, String contents2, Date writeDate2) {
+		super();
+		this.bno2 = bno2;
+		this.title2 = title2;
+		this.writer2 = writer2;
+		this.writerEmail2 = writerEmail2;
+		this.contents2 = contents2;
+		this.writeDate2 = writeDate2;
+	}
+
+
 
 	public Board2Dto(int bno, String title, String writer, String contents, Date writeDate) {
 		super();
@@ -70,5 +85,22 @@ public class Board2Dto {
 	public void setWriteDate2(Date writeDate2) {
 		this.writeDate2 = writeDate2;
 	}
+	
+
+	public String getWriterEmail2() {
+		return writerEmail2;
+	}
+
+	public void setWriterEmail2(String writerEmail2) {
+		this.writerEmail2 = writerEmail2;
+	}
+
+	@Override
+	public String toString() {
+		return "Board2Dto [bno2=" + bno2 + ", title2=" + title2 + ", writer2=" + writer2 + ", writerEmail2="
+				+ writerEmail2 + ", contents2=" + contents2 + ", writeDate2=" + writeDate2 + "]";
+	}
+	
+	
 
 }

@@ -15,12 +15,18 @@
 <div style="background-color:#00008b; color:#ffffff; height:20px; padding: 5px;">
 	SPMS(Simple Project Management System)
 	
-	<c:if test="${memberDto.email ne null}">
+	<c:if test="${sessionScope.memberDto.email ne null}">
 		<span style="float:right;">
-			${memberDto.name}
-			<a style="color:white;" href="<%=request.getContextPath()%>/auth/logout">로그아웃</a>
+			<a style="color:white; text-decoration: none;" href="<%=request.getContextPath()%>/member/update?no=${sessionScope.memberDto.no}">
+				${sessionScope.memberDto.name}
+			</a>
+			<a style="color:white; text-decoration: none;" href="<%=request.getContextPath()%>/auth/logout">로그아웃</a>
 		</span>
 	</c:if>
+
+박지훈 정의광 이찬양 류제건 양우진
+
+양양의 지건
 
 </div>
 

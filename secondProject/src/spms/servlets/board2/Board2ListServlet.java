@@ -1,4 +1,4 @@
-package spms.servlets;
+package spms.servlets.board2;
 
 import java.io.IOException;
 import java.sql.Connection;
@@ -12,50 +12,40 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import spms.dao.Board1Dao;
-import spms.dto.Board1Dto;
+import spms.dao.Board2Dao;
+import spms.dto.Board2Dto;
 import spms.dto.MemberDto;
 
-@WebServlet("/board1/list")
-public class Board1ListServlet extends HttpServlet {
-
+@WebServlet(value = "/board2/list")
+public class Board2ListServlet extends HttpServlet{
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-
+		System.out.println("이게 된다는거는 Board2ListServlet doGet이 제대로 불러와졌다는거겠지");
 		Connection conn = null;
-
+		
 		try {
 			ServletContext sc = this.getServletContext();
-
-			conn = (Connection) sc.getAttribute("conn");
-
-			Board1Dao board1Dao = new Board1Dao();
-
-			board1Dao.setConnection(conn);
-
-			ArrayList<Board1Dto> board1List = null;
-
-			board1List = (ArrayList<Board1Dto>)board1Dao.selectList();
-
-			req.setAttribute("board1List", board1List);
-
-			RequestDispatcher dispatcher = req.getRequestDispatcher("./board1ListView.jsp");
-
-			dispatcher.forward(req, res);
-
+			conn = (Connection)sc.getAttribute("conn");
+			Board2Dao board2Dao = new Board2Dao();
+			board2Dao.setConnection(conn);
+			
+			ArrayList<Board2Dto> board2List = null;
+			board2List = (ArrayList<Board2Dto>)board2Dao.testFnc();
+			req.setAttribute("board2List", board2List);
+			RequestDispatcher rd = req.getRequestDispatcher("./Board2ListView.jsp");
+			rd.forward(req, res);
 		} catch (Exception e) {
 			req.setAttribute("error", e);
-			RequestDispatcher dispatcher = req.getRequestDispatcher("/Error.jsp");
-			dispatcher.forward(req, res);
+			RequestDispatcher rd =
+					req.getRequestDispatcher("/Error.jsp");
+			rd.forward(req, res);
 		}
-
 	}
-
+	
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-
+		System.out.println("이게 된다는거는 Board2ListServlet doPost가 제대로 불러와졌다는거겠지");
 	}
-
 }

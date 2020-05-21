@@ -25,8 +25,8 @@ public class Board2Dao {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		
-		String sql = "SELECT BNO_2, TITLE_2, WRITER_2, WRITE_DATE_2 FROM BOARD_2";
-				sql += " ORDER BY BNO_2 DESC";
+		String sql = "SELECT BNO, TITLE, WRITER, WRITE_DATE FROM SECOND_BOARD ";
+				sql += " ORDER BY BNO DESC";
 		
 		try {
 			pstmt = connection.prepareStatement(sql);
@@ -40,10 +40,10 @@ public class Board2Dao {
 			Date writeDate2 = null;
 
 			while (rs.next()) {
-				bno2 = rs.getInt("BNO_2");
-				title2 = rs.getString("TITLE_2");
-				writer2 = rs.getString("WRITER_2");
-				writeDate2 = rs.getDate("WRITE_DATE_2");
+				bno2 = rs.getInt("BNO");
+				title2 = rs.getString("TITLE");
+				writer2 = rs.getString("WRITER");
+				writeDate2 = rs.getDate("WRITE_DATE");
 
 				Board2Dto board2Dto = new Board2Dto(bno2, title2, writer2, writeDate2);
 
@@ -80,19 +80,21 @@ public class Board2Dao {
 		int result = 0;
 		PreparedStatement pstmt = null;
 		
-		String sql = "INSERT INTO BOARD_2 (BNO_2, TITLE_2, WRITER_2, CONTENTS_2, WRITE_DATE_2)";
-		sql += " VALUES (BOARD_2_BNO_2_SEQ.NEXTVAL, ?, ?, ?, SYSDATE)";
+		String sql = "INSERT INTO SECOND_BOARD  (BNO, TITLE, WRITER, WRITER_EMAIL ,CONTENTS, WRITE_DATE)";
+		sql += " VALUES (SECOND_BOARD_BNO_SEQ.NEXTVAL, ?, ?, ?, ?, SYSDATE)";
 		
 		try {
 			String title2 = board2Dto.getTitle2();
 			String contents2 = board2Dto.getContents2();
 			String writer2 = board2Dto.getWriter2();
+			String writerEmail2 =  board2Dto.getWriterEmail2();
 			
 			pstmt = connection.prepareStatement(sql);
 			
 			pstmt.setString(1, title2);
 			pstmt.setString(2, writer2);
-			pstmt.setString(3, contents2);
+			pstmt.setString(3, writerEmail2);
+			pstmt.setString(4, contents2);
 			
 			result = pstmt.executeUpdate();
 		} catch (Exception e) {
@@ -122,8 +124,8 @@ public class Board2Dao {
 
 		String sql = "";
 
-		sql = "SELECT BNO_2, TITLE_2, WRITER_2, CONTENTS_2 FROM BOARD_2";
-		sql += " WHERE BNO_2 = ?";
+		sql = "SELECT BNO, TITLE, WRITER, CONTENTS FROM SECOND_BOARD ";
+		sql += " WHERE BNO = ?";
 
 		try {
 			pstmt = connection.prepareStatement(sql);
@@ -137,9 +139,9 @@ public class Board2Dao {
 			String contents2 = "";
 
 			if (rs.next()) {
-				title2 = rs.getString("TITLE_2");
-				writer2 = rs.getString("WRITER_2");
-				contents2 = rs.getString("CONTENTS_2");
+				title2 = rs.getString("TITLE");
+				writer2 = rs.getString("WRITER");
+				contents2 = rs.getString("CONTENTS");
 
 				board2Dto = new Board2Dto();
 
@@ -185,8 +187,8 @@ public class Board2Dao {
 		PreparedStatement pstmt = null;
 
 		String sql = "";
-		sql = "UPDATE BOARD_2 SET TITLE_2 = ?, CONTENTS_2 = ?";
-		sql += " WHERE BNO_2 = ?";
+		sql = "UPDATE SECOND_BOARD  SET TITLE = ?, CONTENTS = ?";
+		sql += " WHERE BNO = ?";
 
 		try {
 			pstmt = connection.prepareStatement(sql);
@@ -221,8 +223,8 @@ public class Board2Dao {
 		PreparedStatement pstmt = null;
 
 		String sql = "";
-		sql = "DELETE FROM BOARD_2";
-		sql += " WHERE BNO_2 = ?";
+		sql = "DELETE FROM SECOND_BOARD ";
+		sql += " WHERE BNO = ?";
 
 		try {
 			pstmt = connection.prepareStatement(sql);

@@ -48,7 +48,7 @@
 			</div>
 			
 			<input type='submit' value='완료' style="margin-left: 470px;">
-			<input type='button' value='삭제' onclick="moveDeleteFnc();" style="margin-left: 470px;">
+			<input type='button' value='삭제' onclick="moveDeleteFnc();">
 			<input type='button' value='취소' onclick="moveBoard1ListFnc();">
 		</form>
 	</div>

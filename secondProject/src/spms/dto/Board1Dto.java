@@ -7,6 +7,7 @@ public class Board1Dto {
 	private int no;
 	private String title;
 	private String writer;
+	private String writerEmail;
 	private String contents;
 	private Date writeDate;
 	
@@ -27,6 +28,18 @@ public class Board1Dto {
 		this.no = no;
 		this.title = title;
 		this.writer = writer;
+		this.contents = contents;
+		this.writeDate = writeDate;
+	}
+
+	
+	
+	public Board1Dto(int no, String title, String writer, String writerEmail, String contents, Date writeDate) {
+		super();
+		this.no = no;
+		this.title = title;
+		this.writer = writer;
+		this.writerEmail = writerEmail;
 		this.contents = contents;
 		this.writeDate = writeDate;
 	}
@@ -71,10 +84,20 @@ public class Board1Dto {
 		this.writeDate = writeDate;
 	}
 
+	public String getWriterEmail() {
+		return writerEmail;
+	}
+
+	public void setWriterEmail(String writerEmail) {
+		this.writerEmail = writerEmail;
+	}
+
 	@Override
 	public String toString() {
-		return "BoardDto [no=" + no + ", title=" + title + ", writer=" + writer + ", contents=" + contents
-				+ ", writeDate=" + writeDate + "]";
+		return "Board1Dto [no=" + no + ", title=" + title + ", writer=" + writer + ", writerEmail=" + writerEmail
+				+ ", contents=" + contents + ", writeDate=" + writeDate + "]";
 	}
+
+
 
 }

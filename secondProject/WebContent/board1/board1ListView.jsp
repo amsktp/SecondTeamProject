@@ -40,10 +40,10 @@
 	<div>
 		<table style="border: 1px solid black; border-collapse: collapse; margin-bottom: 30px; width: 770px;">
 			<tr style="border: 1px solid black;">				
-				<td style="border: 1px solid black; width: 70px;">번호</td>
-				<td style="border: 1px solid black; width: 400px;">제목</td>
-				<td style="border: 1px solid black; width: 100px;">작성자</td>
-				<td style="border: 1px solid black; width: 200px;">작성날짜</td>
+				<th style="border: 1px solid black; width: 70px;">번호</th>
+				<th style="border: 1px solid black; width: 400px;">제목</th>
+				<th style="border: 1px solid black; width: 100px;">작성자</th>
+				<th style="border: 1px solid black; width: 200px;">작성날짜</th>
 			</tr>
 			<c:forEach var="board1Dto" items="${board1List}">
 			<tr style="border: 1px solid black;">

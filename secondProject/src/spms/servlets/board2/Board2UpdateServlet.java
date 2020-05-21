@@ -1,4 +1,4 @@
-package spms.servlets;
+package spms.servlets.board2;
 
 import java.io.IOException;
 import java.sql.Connection;
