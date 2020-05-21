@@ -23,10 +23,11 @@ public class LoginServlet extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-
+		
 		RequestDispatcher rd = 
 				req.getRequestDispatcher("./LoginForm.jsp");
 		rd.forward(req, res);
+		
 
 	}
 
