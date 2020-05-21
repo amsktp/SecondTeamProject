@@ -15,9 +15,9 @@
 <div style="background-color:#00008b; color:#ffffff; height:20px; padding: 5px;">
 	SPMS(Simple Project Management System)
 	
-	<c:if test="${member.email ne null}">
+	<c:if test="${memberDto.email ne null}">
 		<span style="float:right;">
-			${member.name}
+			${memberDto.name}
 			<a style="color:white;" href="<%=request.getContextPath()%>/auth/logout">로그아웃</a>
 		</span>
 	</c:if>

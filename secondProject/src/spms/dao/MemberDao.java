@@ -94,9 +94,9 @@ public class MemberDao {
 			String name = memberDto.getName();
 
 			String sql = "insert into member";
-			sql += " value(mno, email, password, mname, cre_date, mod_date)";
+			sql += " value(mno, email, password, mname, cre_date, mod_date, admin_check)";
 			sql += " values(member_mno_seq.nextval";
-			sql += ", ?, ?, ?, sysdate, sysdate)";
+			sql += ", ?, ?, ?, sysdate, sysdate, 'N')";
 
 			pstmt = connection.prepareStatement(sql);
 

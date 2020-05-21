@@ -31,8 +31,6 @@ public class MemberListServlet extends HttpServlet {
 		
 		//데이터베이스 관련 객체 변수 선언
 		Connection conn = null; // 연결
-		Statement stmt = null; // 상태
-		ResultSet rs = null; // 결과
 		
 		
 		try {
