@@ -53,7 +53,7 @@ public class LoginServlet extends HttpServlet {
 			String pwd = req.getParameter("password");
 			String name = "";
 			
-			sql += "SELECT MNAME, EMAIL";
+			sql += "SELECT MNAME, EMAIL, ADMIN_CHECK";
 			sql += " FROM MEMBER";
 			sql += " WHERE EMAIL = ?";
 			sql += " AND PASSWORD = ?";
@@ -69,16 +69,22 @@ public class LoginServlet extends HttpServlet {
 			if(rs.next()) {
 				email = rs.getString("EMAIL");
 				name = rs.getString("MNAME");
+				String adminCheck = rs.getString("ADMIN_CHECK");
 				
 				MemberDto memberDto = new MemberDto();
 				
 				memberDto.setEmail(email);
 				memberDto.setName(name);
+				memberDto.setAdminCheck(adminCheck);
 				
 				HttpSession session = req.getSession();
 				session.setAttribute("memberDto", memberDto);
 				
-				res.sendRedirect("../member/list");
+				if(adminCheck.equals("Y")) {
+					res.sendRedirect("../member/list");
+				} else if (adminCheck.equals("Y")) {
+					res.sendRedirect("#");
+				}
 			}else {
 				RequestDispatcher rd = 
 						req.getRequestDispatcher("./LoginFail.jsp");

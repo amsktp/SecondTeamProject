@@ -18,7 +18,7 @@
 <body>
 
 	<p onclick="listPageMoveFnc();">
-		web05_384 페이지
+		파이팅!파이팅!파이팅!파이팅!
 	</p>
 
 </body>
