@@ -113,7 +113,7 @@
 					<br>	
 					
 						<p style="float: left;">내용 :</p>
-						<textarea style="width: 500px; height: 240px; float: left; margin-left: 10px;" rows="10" cols="10" name="contents">${requestScope.noticeDto.contents}</textarea>
+						<textarea style="width: 500px; height: 240px; float: left; margin-left: 5px;" rows="10" cols="10" name="contents">${requestScope.noticeDto.contents}</textarea>
 					
 				</c:if>
 				<c:if test="${sessionScope.memberDto.adminCheck eq 'N'}">
@@ -121,7 +121,7 @@
 					<br>	
 							
 					<p style="float: left;">내용 :</p>
-					<textarea style="width: 500px; height: 240px; float: left; margin-left: 10px;" rows="10" cols="10" name="contents">${requestScope.noticeDto.contents}</textarea>
+					<textarea style="width: 500px; height: 240px; float: left; margin-left: 5px;" rows="10" cols="10" name="contents">${requestScope.noticeDto.contents}</textarea>
 				</c:if>
 						
 						<input type="hidden" value="${requestScope.noticeDto.writer}" name="writer">
