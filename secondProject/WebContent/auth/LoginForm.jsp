@@ -8,7 +8,12 @@
 	function moveAddPageFnc() {
 		location.href = '../member/add';
 	}
+	
+	function moveFindPageFnc() {
+		location.href = '../auth/find';
+	}
 
+	
 </script>
 
 </head>
@@ -20,6 +25,7 @@
 		암호: 	<input type="password" name="password"><br>
 				<input type="submit" value="로그인">
 				<input onclick="moveAddPageFnc();" type="button" value="회원가입">
+				<input onclick="moveFindPageFnc();" type="button" value="비번 찾기">
 	</form>
 	
 </body>

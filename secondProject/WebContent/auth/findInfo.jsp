@@ -8,8 +8,22 @@
 <meta charset="UTF-8">
 <title>이메일로 비밀번호 찾기</title>
 <script type="text/javascript">
-	function findPwdFnc(){
-		alert("");
+		
+	window.onload = function() {
+		
+		var hiddenPwd = document.getElementById('hiddenPwd');
+		
+		
+		if(hiddenPwd.value != ''){
+			alert('${memberDto.name}' + "님의 비밀번호는" + '${memberDto.password}' +"입니다.");
+			
+		}
+		
+		
+	}		
+	
+	function movePageLoginFnc(){
+		location.href = "../auth/login";
 	}
 </script>	
 	
@@ -17,9 +31,11 @@
 
 <body>
 	<h2>이메일로 비밀번호 찾기</h2>
-	<form action="#" method = "post">
-		이메일:	<input type="text" name="eamil"><br>
-				<input type="button" onclick="findPwdFnc();" value="찾기">
+	<form action="./find" method = "post">
+		이메일:	<input type="text" name="email"><br>
+				<input type="submit" value="찾기">
+				<input type="button" onclick="movePageLoginFnc();"value="로그인">
+				<input id="hiddenPwd" type="text" value="${requestScope.memberDto.password}">
 	</form>
 
 </body>

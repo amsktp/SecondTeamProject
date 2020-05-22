@@ -328,4 +328,59 @@ public class MemberDao {
 		return null;
 		
 	}
+	
+	public MemberDto findInfo(MemberDto memberDto) throws ServletException{
+		
+		PreparedStatement pstmt =null;
+		ResultSet rs = null;
+		
+		try {
+			String email = memberDto.getEmail();
+			String pwd = "";
+			
+			String sql = "SELECT PASSWORD";
+			sql += " FROM MEMBER";
+			sql += " WHERE EMAIL= ?";
+			
+			pstmt = connection.prepareStatement(sql);
+			
+			pstmt.setString(1, email);
+			
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				email = rs.getString("EMAIL");
+				System.out.println(email);
+				pwd = rs.getString("PASSWORD");
+				System.out.println(pwd);
+				
+				memberDto.getEmail();
+				memberDto.getPassword();
+				
+				return memberDto;
+			}
+		} catch (SQLException e) {
+			// TODO: handle exception
+			throw new ServletException(e);
+		} finally {
+			if(rs != null) {
+				try {
+					rs.close();
+				}catch (SQLException e) {
+					// TODO: handle exception
+					e.printStackTrace();
+				}
+			}
+			
+			if (pstmt != null) {
+				try {
+					pstmt.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
+		}
+		
+		return null;
+	}
 }
