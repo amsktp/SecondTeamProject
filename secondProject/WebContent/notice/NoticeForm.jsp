@@ -31,8 +31,11 @@
 
 	
 
-<div id="mainContents" style="margin-top: 70px;">
+<div id="mainContents" style="margin-top: 40px;">
 	<div>
+	
+		<h1>공지사항</h1>
+		
 		<table style="border: 1px solid black; border-collapse: collapse; margin-bottom: 30px; width: 770px;">
 			<tr style="border: 1px solid black;">				
 				<th style="border: 1px solid black; width: 70px;">번호</th>
@@ -44,7 +47,8 @@
 			<tr style="border: 1px solid black;">
 				<td style="border: 1px solid black;">${noticeDto.no}</td>
 				<td style="border: 1px solid black;"><a href="./update?no=${noticeDto.no}" style="text-decoration: none; color: black;">${noticeDto.title}</a></td>
-				<td style="border: 1px solid black;">${noticeDto.writer}</td>
+
+				<td style="border: 1px solid black;">관리자</td>
 				<td style="border: 1px solid black;">${noticeDto.writeDate}</td>
 			</tr>
 			</c:forEach>

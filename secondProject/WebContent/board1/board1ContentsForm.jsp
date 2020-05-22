@@ -37,7 +37,7 @@
 	<jsp:include page="/Header.jsp" />
 	
 	<div>
-		<h1>글쓰기</h1>
+		<h1>글 읽기</h1>
 			<div style="margin-bottom: 20px;">
 				제목 : ${requestScope.board1Dto.title}
 			</div>

@@ -19,6 +19,33 @@
 		location.href = "./delete?no=" + ${requestScope.board1Dto.no};
 		
 	}
+	
+	
+	function countNumFnc(){
+		
+		var content = document.getElementById('content');
+		
+		var contentLength = content.value.length;
+		
+		var LengthSpan = document.getElementById('LengthSpan');
+		
+		LengthSpan.innerHTML = contentLength + '글자';
+	}
+	
+	function writeValiFnc() {
+		
+		var title = document.getElementById('title');
+		
+		var content = document.getElementById('content');
+	
+		if(title.value == '' || content.value == ''){
+			alert('제목 또는 내용을 입력해 주세요');
+			return false;
+		}
+		
+	}
+	
+	
 </script>
 
 </head>
@@ -35,18 +62,21 @@
 	<jsp:include page="/Header.jsp" />
 	
 	<div>
-		<h1>글쓰기</h1>
-		<form action='./update' method='post'>
+		<h1>글 수정</h1>
+		<form action='./update' method='post' onsubmit="return writeValiFnc()">
 			<div>
 				회원번호: <input type="text" name='no' readonly="readonly" value='${requestScope.board1Dto.no}'>
 			</div>
 			<div>
-				제목: <input type='text' name='title' value='${requestScope.board1Dto.title}' style="width: 520px; margin-bottom: 20px;">
+				제목: <input type='text' name='title' id="title" value='${requestScope.board1Dto.title}' style="width: 520px; margin-bottom: 20px;">
 			</div>
 			<div  style="margin-bottom: 30px;">
-				내용: <textarea rows="20px" cols="70px" name='content' style="vertical-align: top;">${requestScope.board1Dto.contents}</textarea>
+				내용: <textarea onkeyup="countNumFnc();" rows="20px" cols="70px" id="content"  name='content' style="vertical-align: top;">${requestScope.board1Dto.contents}</textarea>
 			</div>
-			
+			<div>
+				<span id="LengthSpan"></span> / 한글 300 글자
+				
+			</div>
 			<input type='submit' value='완료' style="margin-left: 470px;">
 			<input type='button' value='삭제' onclick="moveDeleteFnc();">
 			<input type='button' value='취소' onclick="moveBoard1ListFnc();">

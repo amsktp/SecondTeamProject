@@ -123,8 +123,13 @@ public class Board1Dao {
 			pstmt.setString(3, writerEmail);
 			pstmt.setString(4, content);
 
-			result = pstmt.executeUpdate();
 
+			System.out.println(title);
+			System.out.println(writer);
+			System.out.println(writerEmail);
+			System.out.println(content);
+			
+			result = pstmt.executeUpdate();
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
