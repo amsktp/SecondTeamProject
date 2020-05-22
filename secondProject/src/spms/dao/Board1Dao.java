@@ -30,13 +30,26 @@ public class Board1Dao {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 
-		String sql = "SELECT bno, TITLE, writer, write_date";
-		sql += " FROM first_board";
-		sql += " ORDER BY bno DESC";
+//		int startNo = 1;
+//		int endNo = 10;
+//		
+//		String sql = "SELECT bno, title, writer, write_date";
+//			sql += " FROM (SELECT ROWNUM AS RNUM, bno, title, writer, write_date ";
+//			sql += " FROM first_board ";
+//			sql += " order by bno desc) ";
+//			sql += " WHERE RNUM >= ? AND ROWNUM <= ?";
+		
+		
+		String sql = "SELECT bno, title, writer, write_date";
+		sql += " FROM first_board ";
+		sql += " order by bno desc ";
 
 		try {
 			pstmt = connection.prepareStatement(sql);
 
+//			pstmt.setInt(1, startNo);
+//			pstmt.setInt(2, endNo);
+			
 			rs = pstmt.executeQuery();
 
 			ArrayList<Board1Dto> board1List = new ArrayList<Board1Dto>();

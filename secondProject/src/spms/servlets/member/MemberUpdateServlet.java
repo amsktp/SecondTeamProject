@@ -16,6 +16,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import spms.dao.MemberDao;
 import spms.dto.MemberDto;
@@ -86,6 +87,15 @@ public class MemberUpdateServlet extends HttpServlet {
 
          int result = 0;
 
+         HttpSession session = req.getSession();
+         MemberDto sessionMemberDto = (MemberDto)session.getAttribute("memberDto"); 
+         
+         if(memberDto.getNo() == sessionMemberDto.getNo()) {
+        	 sessionMemberDto.setName(memberDto.getName());
+        	 sessionMemberDto.setEmail(memberDto.getEmail());
+        	 session.setAttribute("memberDto", sessionMemberDto);
+         }
+         
          result = memberDao.memberUpdate(memberDto);
 
          if (result == 0) {

@@ -28,6 +28,8 @@ public class Board1ListServlet extends HttpServlet {
 		try {
 			ServletContext sc = this.getServletContext();
 
+//			int pageNo = Integer.parseInt(req.getParameter("pageNo"));
+			
 			conn = (Connection) sc.getAttribute("conn");
 
 			Board1Dao board1Dao = new Board1Dao();
@@ -36,6 +38,7 @@ public class Board1ListServlet extends HttpServlet {
 
 			ArrayList<Board1Dto> board1List = null;
 
+//			board1List = (ArrayList<Board1Dto>)board1Dao.selectList(pageNo);
 			board1List = (ArrayList<Board1Dto>)board1Dao.selectList();
 
 			req.setAttribute("board1List", board1List);

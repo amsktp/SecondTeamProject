@@ -48,7 +48,7 @@ a {
 	
 	<br>
 	
-	<a href="../board1/list">
+	<a href="../board1/list?pageNo=1">
 		<button>
 			게시판1
 		</button>
