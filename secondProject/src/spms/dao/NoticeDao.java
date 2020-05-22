@@ -20,13 +20,53 @@ public class NoticeDao {
 		this.connection = conn;
 	}
 	
+	public int noticeAdd(NoticeDto noticeDto) {
+		int result = 0;
+		PreparedStatement pstmt = null;
+		
+		try {
+			
+			String title = noticeDto.getTitle();
+			String writer = noticeDto.getWriter();
+			String content = noticeDto.getContents();
+			
+			String sql = "INSERT INTO NOTICE_BOARD";
+			sql +=	" VALUES(NOTICE_BOARD_NNO_SEQ.NEXTVAL,";
+			sql +=	" ?, ?, ?,";
+			sql +=	" SYSDATE)";
+			
+			pstmt = connection.prepareStatement(sql);
+			
+			pstmt.setString(1, title);
+			pstmt.setString(2, writer);
+			pstmt.setString(3, content);
+			
+			result = pstmt.executeUpdate();
+			
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		} finally {
+			if (pstmt != null) {
+				try {
+					pstmt.close();
+				} catch (Exception e) {
+					// TODO: handle exception
+					e.printStackTrace();
+				}
+			}
+		}
+			
+		return result;
+	}
+	
 	public ArrayList<NoticeDto> noticeSelect() {
 		
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		
 		String sql = "SELECT";
-		sql	+= " NCONTENTS";
+		sql	+= " NCONTENTS, ntitle, nno, nwriter";
 		sql	+= " FROM NOTICE_BOARD";
 		
 		ArrayList<NoticeDto> noticeList = new ArrayList<NoticeDto>();
@@ -39,9 +79,17 @@ public class NoticeDao {
 			while (rs.next()) {
 				
 				String contents = rs.getString("NCONTENTS");
+				int no = rs.getInt("nno");
+				String title = rs.getString("ntitle");
+				String writer = rs.getString("nwriter");
 				
 				NoticeDto noticeDto = new NoticeDto();
+				
 				noticeDto.setContents(contents);
+				noticeDto.setNo(no);
+				noticeDto.setTitle(title);
+				noticeDto.setWriter(writer);
+				
 				noticeList.add(noticeDto);
 			}
 		

@@ -83,13 +83,10 @@
 				<div id="threeDiv">
 					<c:forEach var="noticeDto" items="${requestScope.noticeList}">
 						
-						<a href="">
-							${noticeDto}
+						<a href="./add?no=${noticeDto.no}">
+							${noticeDto.title} <br/>
 						</a>
 						
-						<textarea rows="10" cols="10">${noticeDto}</textarea><br>
-<%-- 						<input type='text' name='name' value='${noticeDto.contents}'> <br> --%>
-
 					</c:forEach>
 					
 				</div>
@@ -98,7 +95,7 @@
 			</div>
 		</div>
 		
-		<form action="./update" method="post">
+		<form action="./NoticeAdd.jsp" method="post">
 			<input id="firstInput" type="button" value="뒤로가기" onClick='pageMoveFnc();'>
 			<input id="secondInput" type="submit" value="작성" >
 		</form>
