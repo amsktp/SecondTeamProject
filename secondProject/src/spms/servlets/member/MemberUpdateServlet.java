@@ -67,6 +67,7 @@ public class MemberUpdateServlet extends HttpServlet {
       String email = req.getParameter("email");
       String name = req.getParameter("name");
       int no = Integer.parseInt(req.getParameter("no"));
+      String pwd = req.getParameter("password");
 
       ServletContext sc = this.getServletContext();
       conn = (Connection) sc.getAttribute("conn");
@@ -76,6 +77,7 @@ public class MemberUpdateServlet extends HttpServlet {
       memberDto.setEmail(email);
       memberDto.setName(name);
       memberDto.setNo(no);
+      memberDto.setPassword(pwd);
 
       MemberDao memberDao = new MemberDao();
       memberDao.setConnection(conn);

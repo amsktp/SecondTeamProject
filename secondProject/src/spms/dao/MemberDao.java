@@ -234,16 +234,19 @@ public class MemberDao {
 			int no = memberDto.getNo();
 			String email = memberDto.getEmail();
 			String name = memberDto.getName();
+			String pwd = memberDto.getPassword();
 
+			
 			String sql = "UPDATE MEMBER";
-			sql += " SET EMAIL = ?, " + "MNAME =?, MOD_DATE=SYSDATE";
+			sql += " SET EMAIL = ?, " + "MNAME =?, MOD_DATE=SYSDATE," + " PASSWORD = ?";
 			sql += " WHERE MNO = ?";
 
 			pstmt = connection.prepareStatement(sql);
 
 			pstmt.setString(1, email);
 			pstmt.setString(2, name);
-			pstmt.setInt(3, no);
+			pstmt.setString(3, pwd);
+			pstmt.setInt(4, no);
 
 			result = pstmt.executeUpdate();
 
