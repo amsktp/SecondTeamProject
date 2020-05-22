@@ -18,7 +18,12 @@
 	<c:if test="${sessionScope.memberDto.email ne null}">
 		<span style="float:right;">
 			<a style="color:white; text-decoration: none;" href="<%=request.getContextPath()%>/member/update?no=${sessionScope.memberDto.no}">
-				${sessionScope.memberDto.name}
+				<c:if test="${sessionScope.memberDto.adminCheck == 'N'}">
+					${sessionScope.memberDto.name}
+				</c:if>
+				<c:if test="${sessionScope.memberDto.adminCheck == 'Y'}">
+					관리자
+				</c:if>
 			</a>
 			<a style="color:white; text-decoration: none;" href="<%=request.getContextPath()%>/auth/logout">로그아웃</a>
 		</span>
