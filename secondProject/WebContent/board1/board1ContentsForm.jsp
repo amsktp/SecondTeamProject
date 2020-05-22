@@ -12,12 +12,12 @@
 	
 	function moveBoard1ListFnc() {
 		
-		location.href = "./list";
+		location.href = "./list?pageNo=1";
 	}
 
 	function moveUpdateFnc() {
 		
-		location.href = "./update?no=" + ${requestScope.board1Dto.no}
+		location.href = "./update?no=" + ${requestScope.board1Dto.no};
 	}
 	
 </script>
@@ -46,13 +46,10 @@
 			</div>
 			
 			<div style="text-align: right; width: 600px;">
-				<c:if test="${requestScope.board1Dto.writerEmail eq sessionScope.memberDto.email}">
+				<c:if test="${requestScope.board1Dto.writerEmail eq sessionScope.memberDto.email || sessionScope.memberDto.adminCheck eq 'Y'}">
 					<input type='button' value='글 수정' onclick="moveUpdateFnc();">
 				</c:if>
 	
-				<c:if test="${sessionScope.memberDto.adminCheck eq 'Y'}">
-					<input type='button' value='글 수정' onclick="moveUpdateFnc();">
-				</c:if>
 			
 				<input type='button' value='뒤로가기' onclick="moveBoard1ListFnc();">
 			</div>

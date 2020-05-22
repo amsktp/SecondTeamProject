@@ -62,7 +62,7 @@ a {
 	</a>
 
 
-	<a href="../notice/update">
+	<a href="../notice/list">
 		<button>
 			공지사항
 		</button>

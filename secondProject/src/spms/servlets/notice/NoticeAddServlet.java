@@ -44,9 +44,11 @@ public class NoticeAddServlet extends HttpServlet{
 		MemberDto memberDto = (MemberDto) session.getAttribute("memberDto");
 		
 		String writer = memberDto.getName();
+		String writerEmail = memberDto.getEmail();
 		
 		NoticeDto noticeDto = new NoticeDto();
 		
+		noticeDto.setWriterEmail(writerEmail);
 		noticeDto.setContents(contents);
 		noticeDto.setTitle(title);
 		noticeDto.setWriter(writer);
@@ -61,7 +63,7 @@ public class NoticeAddServlet extends HttpServlet{
 				System.out.println("추가된 공지사항이 없습니다");
 			} else {
 				
-				res.sendRedirect("./update");
+				res.sendRedirect("./list");
 			}
 				
 			

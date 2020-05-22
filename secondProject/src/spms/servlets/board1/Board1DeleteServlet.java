@@ -42,7 +42,7 @@ public class Board1DeleteServlet extends HttpServlet{
 			if(result == 0) {
 				System.out.println("회원 삭제에 실패 했습니다.");
 			}
-			res.sendRedirect("./list");
+			res.sendRedirect("./list?pageNo=1");
 
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
