@@ -113,14 +113,15 @@
 					<br>	
 					
 						<p style="float: left;">내용 :</p>
-						<textarea style="width: 500px; height: 240px; float: left; margin-left: 5px;" rows="10" cols="10" name="contents">${requestScope.noticeDto.contents}</textarea>
+						<textarea style="width: 500px; height: 240px; float: left; margin-left: 10px;" rows="10" cols="10" name="contents">${requestScope.noticeDto.contents}</textarea>
 					
 				</c:if>
 				<c:if test="${sessionScope.memberDto.adminCheck eq 'N'}">
 					제목 : <input class="inputTag" type="text" value="${requestScope.noticeDto.title}" name="title" readonly="readonly"><br>
 					<br>	
 							
-					내용 : <textarea style="width: 500px; height: 240px;" rows="10" cols="10" name="contents" readonly="readonly">${requestScope.noticeDto.contents}</textarea>
+					<p style="float: left;">내용 :</p>
+					<textarea style="width: 500px; height: 240px; float: left; margin-left: 10px;" rows="10" cols="10" name="contents">${requestScope.noticeDto.contents}</textarea>
 				</c:if>
 						
 						<input type="hidden" value="${requestScope.noticeDto.writer}" name="writer">
@@ -128,7 +129,7 @@
 
 				</div>
 				<div id="fourDiv">
-				${requestScope.noticeDto.writer}
+				관리자
 				</div>
 			</div>
 			<input id="firstInput" type="button" value="뒤로가기" onclick='pageMoveFnc();'>
