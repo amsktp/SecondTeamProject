@@ -113,7 +113,7 @@
 						<input class="threeDiv" type="text" value="" name="nContents">
 					</div>
 				<div id="fourDiv">
-					작성자: ${sessionScope.memberDto.name}
+					작성자: 괸리자
 				</div>
 			</div>
 			<input id="firstInput" type="button" value="뒤로가기" onClick='pageMoveFnc();'>

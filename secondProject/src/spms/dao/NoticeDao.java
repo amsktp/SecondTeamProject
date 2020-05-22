@@ -24,9 +24,10 @@ public class NoticeDao {
 		
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
-		
+	
 		String sql = "SELECT nno, ntitle, NCONTENTS, NWRITER, NWRITE_DATE";
 		sql	+= " FROM NOTICE_BOARD";
+		sql	+= " order by nno desc";
 		
 		ArrayList<NoticeDto> noticeList = new ArrayList<NoticeDto>();
 		
