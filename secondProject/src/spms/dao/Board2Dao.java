@@ -13,15 +13,12 @@ import spms.dto.MemberDto;
 
 public class Board2Dao {
 	private Connection connection;
-	String testStr = "이게 출력되면 testStr, testFnc()가 먹혔다는 것";
-	String addTestStr = "이게 출력되면 addTestStr, addTestFnc()가 먹혔다는 것";
 	
 	public void setConnection(Connection conn) {
 		this.connection = conn;
 	}
 	
-	public List<Board2Dto> testFnc() throws Exception {
-		System.out.println(testStr);
+	public List<Board2Dto> selectList() throws Exception {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		
@@ -74,9 +71,7 @@ public class Board2Dao {
 		}
 	}
 	
-	public int addTestFnc(Board2Dto board2Dto) throws Exception {
-		System.out.println(addTestStr);
-		
+	public int board2Insert(Board2Dto board2Dto) throws Exception {
 		int result = 0;
 		PreparedStatement pstmt = null;
 		
@@ -115,7 +110,7 @@ public class Board2Dao {
 	}
 	
 	// 게시글 상세 정보 조회
-	public Board2Dto selectOneTestFnc(int no) throws Exception {
+	public Board2Dto board2SelectOne(int no) throws Exception {
 
 		Board2Dto board2Dto = null;
 
@@ -181,7 +176,7 @@ public class Board2Dao {
 		return board2Dto;
 	}
 	
-	public int updateTestFnc(Board2Dto board2Dto) throws SQLException {
+	public int board2Update(Board2Dto board2Dto) throws SQLException {
 		int result = 0;
 
 		PreparedStatement pstmt = null;
@@ -217,7 +212,7 @@ public class Board2Dao {
 	}
 	
 	// 게시글삭제
-	public int deleteTestFnc(int bno2) throws SQLException {
+	public int board2Delete(int bno2) throws SQLException {
 		int result = 0;
 
 		PreparedStatement pstmt = null;

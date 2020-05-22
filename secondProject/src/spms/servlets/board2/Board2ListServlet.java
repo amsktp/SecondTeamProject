@@ -21,7 +21,6 @@ public class Board2ListServlet extends HttpServlet{
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		System.out.println("이게 된다는거는 Board2ListServlet doGet이 제대로 불러와졌다는거겠지");
 		Connection conn = null;
 		
 		try {
@@ -31,7 +30,7 @@ public class Board2ListServlet extends HttpServlet{
 			board2Dao.setConnection(conn);
 			
 			ArrayList<Board2Dto> board2List = null;
-			board2List = (ArrayList<Board2Dto>)board2Dao.testFnc();
+			board2List = (ArrayList<Board2Dto>)board2Dao.selectList();
 			req.setAttribute("board2List", board2List);
 			RequestDispatcher rd = req.getRequestDispatcher("./Board2ListView.jsp");
 			rd.forward(req, res);
@@ -46,6 +45,5 @@ public class Board2ListServlet extends HttpServlet{
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		System.out.println("이게 된다는거는 Board2ListServlet doPost가 제대로 불러와졌다는거겠지");
 	}
 }

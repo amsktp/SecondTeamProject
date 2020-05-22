@@ -33,7 +33,7 @@ public class Board2DeleteServlet extends HttpServlet {
 			Board2Dao board2Dao = new Board2Dao();
 			board2Dao.setConnection(conn);
 
-			int result = board2Dao.deleteTestFnc(bno2);
+			int result = board2Dao.board2Delete(bno2);
 
 			if (result == 0) {
 				System.out.println("게시글 삭제가 정상처리 되지 않았습니다");

@@ -23,8 +23,6 @@ public class Board2UpdateServlet extends HttpServlet{
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		System.out.println("이게 된다는거는 Board2UpdateServlet doGet이 제대로 불러와졌다는거겠지");
-		
 		Connection conn = null;
 		RequestDispatcher rd = null;
 
@@ -41,7 +39,7 @@ public class Board2UpdateServlet extends HttpServlet{
 			Board2Dao board2Dao = new Board2Dao();
 			board2Dao.setConnection(conn);
 			
-			Board2Dto board2Dto = board2Dao.selectOneTestFnc(no);
+			Board2Dto board2Dto = board2Dao.board2SelectOne(no);
 			
 			req.setAttribute("board2Dto", board2Dto);
 			rd = req.getRequestDispatcher("./Board2UpdateForm.jsp");
@@ -61,7 +59,6 @@ public class Board2UpdateServlet extends HttpServlet{
 	protected void doPost(HttpServletRequest req, HttpServletResponse res)
 		throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		System.out.println("이게 된다는거는 Board2UpdateServlet doPost가 제대로 불러와졌다는거겠지");
 		Board2Dto board2Dto = null;
 		
 		Connection conn = null;
@@ -85,7 +82,7 @@ public class Board2UpdateServlet extends HttpServlet{
 			Board2Dao board2Dao = new Board2Dao();
 			board2Dao.setConnection(conn);
 			
-			int result = board2Dao.updateTestFnc(board2Dto);
+			int result = board2Dao.board2Update(board2Dto);
 
 			if(result == 0){
 				System.out.println("게시글 수정이 실패하였습니다.");

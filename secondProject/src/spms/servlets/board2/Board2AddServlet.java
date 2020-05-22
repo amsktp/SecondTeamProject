@@ -56,7 +56,7 @@ public class Board2AddServlet extends HttpServlet{
 		board2Dao.setConnection(conn);
 		
 		try {
-			int result = board2Dao.addTestFnc(board2Dto);
+			int result = board2Dao.board2Insert(board2Dto);
 			
 			if(result == 0) {
 				System.out.println("회원가입~~~~~ 실패!");
