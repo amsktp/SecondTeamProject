@@ -20,7 +20,27 @@ a {
 	text-decoration: none;
 	
 }
+
+table,tr,td {
+	border: 1px solid black;
+	border-collapse: collapse;
+	
+}
+
+table {
+	width: 700px;
+}
+
+#trHead {
+	background-color: skyblue;
+	font-weight: bold;
+	font-size: 15px;
+	text-align: center;
+}
 </style>
+<script type="text/javascript">
+
+</script>
 <body>
 
 	<jsp:include page="/Header.jsp" />
@@ -34,15 +54,27 @@ a {
 		<p>
 			<a href='./add'>신규 회원</a>
 		</p>
-		<c:forEach var="memberDto" items="${memberList}">
-		
-			${memberDto.no},
-			<a href='./update?no=${memberDto.no}'>${memberDto.name}</a>,
-			${memberDto.email},
-			${memberDto.createDate}
-			<a href='./delete?no=${memberDto.no}'>[삭제]</a><br>
-			
-		</c:forEach>
+		<table>
+			<tr id='trHead'>
+				<td>회원번호</td>
+				<td>회원이름</td>
+				<td>회원이메일</td>
+				<td>가입날짜</td>
+				<td>관리버튼</td>
+			</tr>
+			<c:forEach var="memberDto" items="${memberList}">
+				<tr>
+					<td>${memberDto.no}</td>
+					<td>${memberDto.name}</td>
+					<td>${memberDto.email}</td>
+					<td>${memberDto.createDate}</td>
+					<td>
+						<a href='./delete?no=${memberDto.no}'><input type='button' value='삭제'></a>
+						<a href='./update?no=${memberDto.no}'><input type='button' value='수정'></a>
+					</td>
+				</tr>
+			</c:forEach>
+		</table>
 		
 	</c:if>
 	
