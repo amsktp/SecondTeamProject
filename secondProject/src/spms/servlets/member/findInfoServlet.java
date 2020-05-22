@@ -60,9 +60,8 @@ public class findInfoServlet extends HttpServlet{
 			
 			req.setAttribute("memberDto", memberDto);
 			
-			System.out.println("find 들어오았으ㅜㅁ");
-			System.out.println(memberDto.getEmail());
-			System.out.println(memberDto.getPassword());
+			
+			
 			RequestDispatcher rd =
 					req.getRequestDispatcher("./findInfo.jsp");
 			
@@ -70,6 +69,7 @@ public class findInfoServlet extends HttpServlet{
 			
 		} catch (Exception e) {
 			// TODO: handle exception
+			throw e;
 		}
 		
 		

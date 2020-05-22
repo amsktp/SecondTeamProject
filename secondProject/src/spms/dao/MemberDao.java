@@ -337,8 +337,9 @@ public class MemberDao {
 		try {
 			String email = memberDto.getEmail();
 			String pwd = "";
+			String name = "";
 			
-			String sql = "SELECT PASSWORD";
+			String sql = "SELECT PASSWORD, EMAIL, MNAME";
 			sql += " FROM MEMBER";
 			sql += " WHERE EMAIL= ?";
 			
@@ -348,14 +349,16 @@ public class MemberDao {
 			
 			rs = pstmt.executeQuery();
 			
+			
+			
 			if(rs.next()) {
 				email = rs.getString("EMAIL");
-				System.out.println(email);
 				pwd = rs.getString("PASSWORD");
-				System.out.println(pwd);
+				name = rs.getString("MNAME");
 				
-				memberDto.getEmail();
-				memberDto.getPassword();
+				memberDto.setEmail(email);
+				memberDto.setPassword(pwd);
+				memberDto.setName(name);
 				
 				return memberDto;
 			}

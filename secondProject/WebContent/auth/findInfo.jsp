@@ -17,6 +17,7 @@
 		if(hiddenPwd.value != ''){
 			alert('${memberDto.name}' + "님의 비밀번호는" + '${memberDto.password}' +"입니다.");
 			
+			location.href = "../auth/login?id=${memberDto.email}";
 		}
 		
 		
@@ -35,7 +36,7 @@
 		이메일:	<input type="text" name="email"><br>
 				<input type="submit" value="찾기">
 				<input type="button" onclick="movePageLoginFnc();"value="로그인">
-				<input id="hiddenPwd" type="text" value="${requestScope.memberDto.password}">
+				<input id="hiddenPwd" type="hidden" value="${requestScope.memberDto.password}">
 	</form>
 
 </body>
