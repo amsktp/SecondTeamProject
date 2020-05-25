@@ -6,7 +6,40 @@
 <head>
 
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>글목록</title>
+
+<style type="text/css">
+
+	table, tr, td {
+		border-collapse: collapse;
+		text-align: center;
+	}
+	
+	td {
+		height: 34px;
+	}
+	
+	tr {
+		border-bottom: 1px solid #DAD9FF;
+	}
+	
+	input {
+		border: none;
+		background-color: #DAD9FF;
+		border-radius: 4px;
+	}
+	
+	input:hover {
+    	background-color: #4B58E3;
+	}
+
+	a:link {text-decoration: none; color: black;}
+	a:visited {text-decoration: none; color: black;}
+	a:active {text-decoration: none; color: black;}
+	a:hover {text-decoration: none; color: #4B58E3;}
+
+
+</style>
 
 </head>
 
@@ -25,29 +58,41 @@
 	
 </script>
 
+<script type="text/javascript">
+	function moveBoardListFnc() {
+		location.href="../member/list";
+	}
+	
+	window.onload = function() {
+		var firstTr = document.getElementsByTagName("tr")[0];
+		firstTr.style.color = '#4B58E3';
+		var trArrLengthValue = document.getElementsByTagName("tr").length;
+		var lastTr = document.getElementsByTagName("tr")[trArrLengthValue-1];
+	}
+</script>
+
 <body>
 
 	<jsp:include page="/Header.jsp"></jsp:include>
 
 	
 
-<div id="mainContents" style="margin-top: 40px;">
-	<div style="width: 770px;">
+<div id="mainContents">
+	<div>
 	
-		<h1>공지사항</h1>
+		<h2>공지사항</h2>
 		
-		<table style="border-top: 1px solid white; border-collapse:collapse; margin-bottom: 30px; 
-				width: 770px; text-align: center;">
-			<tr style="height: 40px; color: #4B58E3;">				
-				<th style="width: 70px;">번호</th>
-				<th style="width: 400px;">제목</th>
-				<th style="width: 100px;">작성자</th>
-				<th style="width: 200px;">작성날짜</th>
+		<table style="border-collapse:collapse; margin-bottom: 20px; text-align: center;">
+			<tr style="color: #4B58E3; font-weight: bold;">				
+				<td style="width: 70px;">번호</td>
+				<td style="width: 400px;">제목</td>
+				<td style="width: 100px;">작성자</td>
+				<td style="width: 200px;">작성날짜</td>
 			</tr>
 			<c:forEach var="noticeDto" items="${noticeList}">
 			<tr style="border-top: 1px solid #DAD9FF;">
-				<td style="height: 40px;">${noticeDto.no}</td>
-				<td style="height: 40px;"><a href="./update?no=${noticeDto.no}" style="text-decoration: none; color: black;">${noticeDto.title}</a>
+				<td>${noticeDto.no}</td>
+				<td><a href="./update?no=${noticeDto.no}" style="text-decoration: none; color: black;">${noticeDto.title}</a>
 				</td>
 
 				<td>관리자</td>
@@ -56,16 +101,14 @@
 			</c:forEach>
 		</table>
 		<div>
-			<input style="color: white; border-radius: 5px; background-color: #47C83E; height:30px;"
-				onclick="moveBoardListFnc();" type="button" value="뒤로가기" >
-			
-			<c:if test="${sessionScope.memberDto.adminCheck eq 'Y'}">
-				<form action="./add" method="get" 
-					style="float: right; width: 100px; text-align: right;">
-					<input type="submit" value="글쓰기" style="color: white; border-radius: 5px;
-							height:30px; background-color: #00D8FF">
-				</form>
-			</c:if>
+			<form action="./add" method="get">
+		
+				<input onclick="moveBoardListFnc();" type="button" value="게시판 목록" >
+				
+				<c:if test="${sessionScope.memberDto.adminCheck eq 'Y'}">
+						<input type="submit" value="글쓰기" style="margin-left: 600px;">
+				</c:if>
+			</form>
 		</div>
 		
 	</div>

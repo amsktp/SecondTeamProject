@@ -28,7 +28,7 @@
 	}
 </script>	
 <style type="text/css">
-div{
+.divClass{
 	text-align: center;
 	width: 240px;
 }
@@ -59,14 +59,16 @@ div{
 </head>
 
 <body>
+	<jsp:include page="/Header.jsp" />
+
 	<h2>이메일로 비밀번호 찾기</h2>
-	<div>
+	<div class="divClass">
 		<form action="./find" method = "post">
-			<div>
+			<div class="divClass">
 				이메일:	<input class = 'underLine' type="text" name="email">
 			</div>
 			<br>
-			<div>
+			<div class="divClass">
 				<input id='greenBtn' type="submit" value="찾기">
 				<input id='blueBtn' type="button" onclick="movePageLoginFnc();"value="로그인">
 				<input id="hiddenPwd" type="hidden" value="${requestScope.memberDto.password}">
@@ -74,6 +76,7 @@ div{
 		</form>
 	</div>
 
+	<jsp:include page="/Tail.jsp" />
 </body>
 
 </html>

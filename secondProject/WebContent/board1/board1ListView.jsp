@@ -8,6 +8,37 @@
 <meta charset="UTF-8">
 <title>게시판 1목록</title>
 
+<style type="text/css">
+
+	table, tr, td {
+		border-collapse: collapse;
+		text-align: center;
+	}
+	
+	td {
+		height: 34px;
+	}
+	
+	tr {
+		border-bottom: 1px solid #DAD9FF;
+	}
+	
+	input {
+		border: none;
+		background-color: #DAD9FF;
+		border-radius: 4px;
+	}
+	
+	input:hover {
+    	background-color: #4B58E3;
+	}
+
+	a:link {text-decoration: none; color: black;}
+	a:visited {text-decoration: none; color: black;}
+	a:active {text-decoration: none; color: black;}
+	a:hover {text-decoration: none; color: #4B58E3;}
+
+</style>
 <script type="text/javascript">
 
 	function moveBoardListFnc() {
@@ -33,6 +64,20 @@
 		tdObj.parentNode.style.backgroundColor = 'skyblue';
 		tdObj.style.color = 'white';
 	}
+
+</script>
+	
+<script type="text/javascript">
+	function moveBoardListFnc() {
+		location.href="../member/list";
+	}
+	
+	window.onload = function() {
+		var firstTr = document.getElementsByTagName("tr")[0];
+		firstTr.style.color = '#4B58E3';
+		var trArrLengthValue = document.getElementsByTagName("tr").length;
+		var lastTr = document.getElementsByTagName("tr")[trArrLengthValue-1];
+	}
 </script>
 
 </head>
@@ -54,33 +99,30 @@
 	type="java.util.ArrayList<spms.dto.Board1Dto>"
 />
 <h2>게시판1</h2>
-<div id="mainContents" style="margin-top: 30px;">
+<div id="mainContents">
 	<div>
-		<table style="border: 1px solid black; border-collapse: collapse; margin-bottom: 30px; width: 770px;">
-			<tr style="border: 1px solid black;">				
-				<th style="border: 1px solid black; width: 70px;">번호</th>
-				<th style="border: 1px solid black; width: 400px;">제목</th>
-				<th style="border: 1px solid black; width: 100px;">작성자</th>
-				<th style="border: 1px solid black; width: 200px;">작성날짜</th>
+		<table>
+			<tr  style="font-weight: bold;">				
+				<td style="width: 70px;">번호</td>
+				<td style="width: 400px;">제목</td>
+				<td style="width: 100px;">작성자</td>
+				<td style="width: 200px;">작성날짜</td>
 			</tr>
 			<c:forEach var="board1Dto" items="${board1List}" begin="<%=startNo%>" end="<%=endNo%>">
-			<tr style="border: 1px solid black;">
-				<td style="border: 1px solid black;">${board1Dto.no}</td>
-				<td style="border: 1px solid black;"><a onmouseover="focusOverFnc(this);" onmouseleave="focusOutFnc(this);" href="./contents?no=${board1Dto.no}" style="text-decoration: none; color: black;">${board1Dto.title}</a></td>
-				<td style="border: 1px solid black;">${board1Dto.writer}</td>
-				<td style="border: 1px solid black;">${board1Dto.writeDate}</td>
+			<tr>
+				<td>${board1Dto.no}</td>
+				<td><a onmouseover="focusOverFnc(this);" onmouseleave="focusOutFnc(this);" href="./contents?no=${board1Dto.no}" style="text-decoration: none; color: black;">${board1Dto.title}</a></td>
+				<td>${board1Dto.writer}</td>
+				<td>${board1Dto.writeDate}</td>
 			</tr>
 			</c:forEach>
 		</table>
 
 		<div style="width: 770px; text-align: center;">
 			<c:forEach var="i" begin="1" end="${board1List.size() / 10 +1}">
-<%-- 				<c:if test="${i eq <%=pageNo%>}"> --%>
-<%-- 					[${i}] asdasdas1 --%>
-<%-- 				</c:if> --%>
-<%-- 				<c:if test="${i ne pageNo}"> --%>
-<%-- 					<a href="./list?pageNo=${i}">[${i}]</a> asdasd2 --%>
-<%-- 				</c:if> --%>
+				<c:if test="${i ne pageNo}">
+					<a href="./list?pageNo=${i}">[${i}]</a>
+				</c:if>
 			</c:forEach>
 		</div>		
 

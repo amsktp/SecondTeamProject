@@ -6,7 +6,7 @@
 <head>
 
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>글쓰기</title>
 
 <style type="text/css">
 	
@@ -55,13 +55,14 @@
 		height: 40px;
 		margin-top: 10px;
 		margin-left: 10px;
+		border: none;
  	}
   	#secondInput{ 
  		float: right; 
 		width: 70px;
 		height: 40px;
 		margin-top: 10px;
-		
+		border: none;		
  	}
  	
 </style>
@@ -106,16 +107,18 @@
 				</div>			
 					<div id="contentsDiv">
 						제목: <input class="threeDiv" type="text" value="" name="nTitle"><br><br>
-						<textarea  rows="20" cols="10" style="width: 594px;"></textarea>
+						<textarea  rows="20" cols="10" style="width: 594px;" name="nContents"></textarea>
 
 					</div>
 				<div id="fourDiv">
 					작성자: 관리자
 				</div>
 			</div>
-			<input class="threeDiv" id="firstInput" type="button" value="뒤로가기" onClick='pageMoveFnc();' style="border-radius: 5px;
+			<input class="threeDiv" id="firstInput" type="button" value="뒤로가기" 
+				onClick='pageMoveFnc();' style="border-radius: 5px;
 				background-color: #00D8FF; color: white;" >	
-			<input class="threeDiv" id="secondInput" type="submit" value="작성완료" style="background-color: #47C83E; color: white;
+			<input class="threeDiv" id="secondInput" type="submit" value="작성완료" 
+				style="background-color: #47C83E; color: white;
 				border-radius: 5px;">
 		</form>
 		

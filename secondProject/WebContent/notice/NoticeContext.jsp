@@ -6,7 +6,7 @@
 <head>
 
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>글수정</title>
 
 <style type="text/css">
 	
@@ -59,7 +59,7 @@
 		height: 40px;
 		margin-top: 10px;
 		margin-left: 10px;
-		
+		border: none;		
  	}
  	
  	#secondInput{ 
@@ -68,6 +68,7 @@
 		height: 40px;
 		margin-top: 10px;
 		margin-left: 10px;
+		border: none;
  	}
  	
  	#threeInput{
@@ -75,6 +76,7 @@
 		width: 70px;
 		height: 40px;
 		margin-top: 10px;
+		border: none;
  	}
  	
  	.inputTag{

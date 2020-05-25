@@ -2,6 +2,7 @@
 <%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -72,7 +73,15 @@ tr, td {
 				
 				<td colspan="2">
 					<input class="btn" id="greenBtn" type='submit' value='추가'>
-					<input class="btn" id="orangeBtn" type='reset' value='취소'>
+					
+					<c:if test="${sessionScope.memberDto ne null}">
+						<input class="btn" id="orangeBtn" type='button' value='취소' onclick="location.href='./list'">
+					</c:if>
+					
+					<c:if test="${sessionScope.memberDto eq null}">
+						<input class="btn" id="orangeBtn" type='button' value='취소' onclick="location.href='<%=request.getContextPath()%>/auth/login'">
+					</c:if>
+					
 				</td>
 			</tr>	
 		</table>

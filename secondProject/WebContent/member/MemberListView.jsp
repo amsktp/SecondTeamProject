@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>메인</title>
 </head>
 <style type="text/css">
 button{
@@ -52,7 +52,10 @@ th, td {
 	
 		<h1>관리자 페이지</h1>
 		<p>
-			<a href='./add'>신규 회원</a>
+			
+			<input type="button" onclick="location.href = './add'" value="신규회원" style="border: none;
+			background-color: rgb(255,243,235); border-radius: 4px; width:100px; height: 30px; color: black; font-weight: bold;">
+			
 		</p>
 		<table>
 			<tr id='trHead'>
@@ -79,31 +82,28 @@ th, td {
 					</td>
 				</tr>
 			</c:forEach>
+			
 		</table>
 		
 	</c:if>
 	
 	<br>
-	
-	<a href="../board1/list?pageNo=1">
-		<button>
-			게시판1
-		</button>
-	</a>
-	
-
-	<a href="../board2/list">
-		<button>
-		게시판2
-		</button>
-	</a>
-
-
-	<a href="../notice/list">
-		<button>
-			공지사항
-		</button>
-	</a>
+			<a href="<%=request.getContextPath()%>/board1/list?pageNo=1" style="margin-right: 50px; text-decoration: none;">
+				<input type="button" value="게시판1" 
+					style="border: none; background-color: #5CB85C; color: white; 
+					width: 200px; height: 50px; border-radius: 7px; margin-top: 10px;" >
+			</a>
+			<a href="<%=request.getContextPath()%>/board2/list" style="margin-right: 50px; text-decoration: none;">
+				<input type="button" value="게시판2"
+					style="border: none; background-color: #5BC0DE; color: white;
+					 width: 200px; height: 50px;  border-radius: 7px;">
+			</a>
+			<a href="<%=request.getContextPath()%>/notice/list" text-decoration: none;>
+				<input type="button" value="공지사항" 
+					style="border: none; background-color: #F0AD4E; color: white; 
+					width: 200px; height: 50px; border-radius: 7px;">
+			</a>
+			
 	<jsp:include page="/Tail.jsp" />
 </body>
 </html>

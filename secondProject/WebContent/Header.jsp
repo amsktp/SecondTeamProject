@@ -63,10 +63,11 @@
 		
 		<div style=" float: right; margin-top: 10px; font-weight: bold; color: ">
 			<c:if test="${sessionScope.memberDto.email eq null}">
-				<a href="/<%=request.getContextPath()%>/auth/login">
+				<a href="<%=request.getContextPath()%>/auth/login" style="color:black; text-decoration: none;">
 					로그인
 				</a>				
 			</c:if>
+			
 			<c:if test="${sessionScope.memberDto.email ne null}">
 					<a style="color:black; text-decoration: none;"
 						href="<%=request.getContextPath()%>/member/update?no=${sessionScope.memberDto.no}">

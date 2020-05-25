@@ -5,7 +5,7 @@
 <head>
 
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>환영합니다 ^_^</title>
 
 <script type="text/javascript">
 	function listPageMoveFnc() {
@@ -18,7 +18,7 @@
 
 <body>
 
-		<jsp:include page="/Header.jsp" />
+	<jsp:include page="/Header.jsp" />
 
 	<div>
 		<strong>테일아!!</strong> 진화시켜줘!!
@@ -27,7 +27,7 @@
 		<img onclick="listPageMoveFnc();" alt="아구몬 안녕" src="<%=request.getContextPath()%>/img/agumon.png">
 	</div>		
 
-		<jsp:include page="/Tail.jsp" />
+	<jsp:include page="/Tail.jsp" />
 
 </body>
 

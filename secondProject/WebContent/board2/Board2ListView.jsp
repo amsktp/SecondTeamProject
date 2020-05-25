@@ -56,7 +56,7 @@
 	</table>
 	<form action='./add' method='get'>
 		<input type='button' onclick="moveBoardListFnc();" value='게시판 목록' style="margin-top: 20px;">
-		<input type='submit' value='글쓰기'>
+		<input type='submit' value='글쓰기' style="margin-left: 600px;">
 	</form>
 	
 	<jsp:include page="/Tail.jsp" />

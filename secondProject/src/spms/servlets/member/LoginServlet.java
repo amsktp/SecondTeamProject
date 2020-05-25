@@ -65,8 +65,9 @@ public class LoginServlet extends HttpServlet {
 				RequestDispatcher rd = 
 						req.getRequestDispatcher("./LoginFail.jsp");
 				rd.forward(req, res);
-			}else if(memberDto.getAdminCheck().equals("N")) {
-				
+			}
+			
+			if(memberDto.getAdminCheck().equals("N")) {
 				res.sendRedirect("../notice/list");
 				
 			}else if(memberDto.getAdminCheck().equals("Y")) {

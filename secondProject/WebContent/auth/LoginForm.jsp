@@ -7,7 +7,7 @@
 <title>로그인</title>
 <script type="text/javascript">
 	function moveAddPageFnc() {
-		location.href = '../member/add';
+		location.href = '<%=request.getContextPath()%>/member/add';
 	}
 	
 	function moveFindPageFnc() {
@@ -18,7 +18,8 @@
 </script>
 
 <style type="text/css">
-div {
+
+.divClass {
 	text-align: center;
 /* 	border: 1px solid black; */
 	width: 240px;
@@ -59,24 +60,29 @@ div {
 %>
 
 <body>
+
+	<jsp:include page="/Header.jsp" />
+
 	<h2>사용자 로그인</h2>
-	<div>
+	<div class="divClass">
 		<form action="./login" method="post">
-			<div>
+			<div class="divClass"> 
 				이메일: 	<input class = 'underLine' type="text" name="email" value="<%=id%>">
 			</div>
 			<br>
-			<div>
+			<div class="divClass">
 				암&ensp;&nbsp;호: 	<input class = 'underLine' type="password" name="password">
 			</div>
 			<br>
-			<div>
+			<div class="divClass">
 				<input id='greenBtn' type="submit" value="로그인">
 				<input id='blueBtn' onclick="moveAddPageFnc();" type="button" value="회원가입">
 				<input id='orangeBtn' onclick="moveFindPageFnc();" type="button" value="비번 찾기">
 			</div>
 		</form>
 	</div>
+	
+		<jsp:include page="/Tail.jsp" />
 	
 </body>
 </html>
