@@ -38,6 +38,9 @@
 	
 	<div>
 		<h1>글 읽기</h1>
+			<div  style="margin-bottom: 20px;">
+				작성자 : ${requestScope.board1Dto.writer}
+			</div>
 			<div style="margin-bottom: 20px;">
 				제목 : ${requestScope.board1Dto.title}
 			</div>

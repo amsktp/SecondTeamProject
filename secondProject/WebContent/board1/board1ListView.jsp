@@ -20,6 +20,18 @@
 		
 		location.href="./add";
 		
+		
+	}
+	
+	function focusOutFnc(tdObj) {
+		tdObj.parentNode.style.backgroundColor = 'white';	
+		tdObj.style.color = 'black';
+	}
+	
+	function focusOverFnc(tdObj) {
+			
+		tdObj.parentNode.style.backgroundColor = 'skyblue';
+		tdObj.style.color = 'white';
 	}
 </script>
 
@@ -29,6 +41,8 @@
 	   int endNo = 10 * pageNo;
 		int cnt = 1;
 	%>
+	
+	
 <body>
 
 <jsp:include page="/Header.jsp"/>
@@ -52,7 +66,7 @@
 			<c:forEach var="board1Dto" items="${board1List}" begin="<%=startNo%>" end="<%=endNo%>">
 			<tr style="border: 1px solid black;">
 				<td style="border: 1px solid black;">${board1Dto.no}</td>
-				<td style="border: 1px solid black;"><a href="./contents?no=${board1Dto.no}" style="text-decoration: none; color: black;">${board1Dto.title}</a></td>
+				<td style="border: 1px solid black;"><a onmouseover="focusOverFnc(this);" onmouseleave="focusOutFnc(this);" href="./contents?no=${board1Dto.no}" style="text-decoration: none; color: black;">${board1Dto.title}</a></td>
 				<td style="border: 1px solid black;">${board1Dto.writer}</td>
 				<td style="border: 1px solid black;">${board1Dto.writeDate}</td>
 			</tr>
@@ -61,8 +75,12 @@
 
 		<div style="width: 770px; text-align: center;">
 			<c:forEach var="i" begin="1" end="${board1List.size() / 10 +1}">
-				<a href="./list?pageNo=<%=cnt%>">[<%=cnt%>]</a>
-				<%cnt++; %>
+<%-- 				<c:if test="${i eq <%=pageNo%>}"> --%>
+<%-- 					[${i}] asdasdas1 --%>
+<%-- 				</c:if> --%>
+<%-- 				<c:if test="${i ne pageNo}"> --%>
+<%-- 					<a href="./list?pageNo=${i}">[${i}]</a> asdasd2 --%>
+<%-- 				</c:if> --%>
 			</c:forEach>
 		</div>		
 

@@ -53,7 +53,7 @@
 				제목: <input id="title" type='text' name='title' style="width: 520px; margin-bottom: 20px;">
 			</div>
 			<div  style="margin-bottom: 30px;">
-				내용: <textarea onkeyup="countNumFnc();" id="content" rows="20px" cols="70px"
+				내용: <textarea onkeyup="countNumFnc();" id="content" rows="20px" cols="70px" maxlength="300"
 					 name='content' style="vertical-align: top; resize: none;"></textarea>
 			</div>
 			<div>
