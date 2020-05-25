@@ -22,15 +22,12 @@ public class Board2AddServlet extends HttpServlet{
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		System.out.println("이게 된다는거는 Board2AddServlet doGet이 제대로 불러와졌다는거겠지");
 		res.sendRedirect("../board2/Board2AddForm.jsp");
 	}
 	
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		System.out.println("이게 된다는거는  Board2AddServlet doPost가 제대로 불러와졌다는거겠지");
-		
 		Connection conn = null;
 		
 		HttpSession session = req.getSession();

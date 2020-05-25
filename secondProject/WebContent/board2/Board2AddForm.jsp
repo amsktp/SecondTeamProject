@@ -27,17 +27,37 @@
 		});
 	}
 </script>
+<style>
+	.inputLikeButton {
+		border: none;
+		background-color: #DAD9FF;
+		border-radius: 4px;
+	}
+	.inputLikeButton:hover {
+		background-color: #4B58E3;
+	}
+</style>
 </head>
 <body>
 	<jsp:include page="/Header.jsp" />
 	
 	<h2>글쓰기</h2>
 	<form action='./add' method='post' name='insertFrm'>
-		제목: <input type='text' name='title2'><br>
-		내용: <textarea onKeyup="len_chk();" rows="20px" cols="70px" name='contents2' style="vertical-align: top;" placeholder="300자 이내로 기재해주세요."></textarea><br>
-		글자수: <input id='lenInput' type='text' value=''><br>
-		<input type='button' value='취소' onclick="moveBoard2ListFnc();">
-		<input type='submit' value='글쓰기'>
+		<table>
+			<tr>
+				<td>제목:</td><td><input type='text' name='title2'></td>
+			</tr>
+			<tr>
+				<td style="vertical-align:top">내용:</td><td><textarea onKeyup="len_chk();" rows="20px" cols="70px" name='contents2' style="vertical-align: top;" placeholder="300자 이내로 기재해주세요."></textarea></td>
+			</tr>
+			<tr>
+				<td>글자수:</td><td><input id='lenInput' type='text' value=''></td>
+			</tr>
+			<tr>
+				<td><input class='inputLikeButton' type='button' value='취소' onclick="moveBoard2ListFnc();" style="margin-top: 20px;"></td>
+				<td><input class='inputLikeButton' type='submit' value='글쓰기' style="margin-top: 20px;"></td>
+			</tr>
+		</table>
 	</form>
 	<jsp:include page="/Tail.jsp" />
 </body>
