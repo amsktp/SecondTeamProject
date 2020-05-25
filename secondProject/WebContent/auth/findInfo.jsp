@@ -27,17 +27,52 @@
 		location.href = "../auth/login";
 	}
 </script>	
+<style type="text/css">
+div{
+	text-align: center;
+	width: 240px;
+}
+
+#greenBtn{
+	background-color: rgb(92, 184, 92);
+}
+
+#blueBtn{
+	background-color: rgb(91, 192, 222);
+}
+
+#greenBtn, #blueBtn {
+	border: 1px solid white;
+	border-radius: 4px;
+	color: white;
+	height: 25px;
+	width: 90px;
+}
+
+.underLine {
+	border: none;
+	border-bottom: 2px solid gray;
+}
+
+</style>
 	
 </head>
 
 <body>
 	<h2>이메일로 비밀번호 찾기</h2>
-	<form action="./find" method = "post">
-		이메일:	<input type="text" name="email"><br>
-				<input type="submit" value="찾기">
-				<input type="button" onclick="movePageLoginFnc();"value="로그인">
+	<div>
+		<form action="./find" method = "post">
+			<div>
+				이메일:	<input class = 'underLine' type="text" name="email">
+			</div>
+			<br>
+			<div>
+				<input id='greenBtn' type="submit" value="찾기">
+				<input id='blueBtn' type="button" onclick="movePageLoginFnc();"value="로그인">
 				<input id="hiddenPwd" type="hidden" value="${requestScope.memberDto.password}">
-	</form>
+			</div>
+		</form>
+	</div>
 
 </body>
 
