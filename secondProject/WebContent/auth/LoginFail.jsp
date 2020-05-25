@@ -19,6 +19,6 @@
 		이메일 또는 암호가 맞지 않습니다!<br> 잠시 후에 다시 로그인 화면으로 갑니다.
 	</p>
 
-	<img src='../img/loginFailImg.PNG' alt="안돼 돌아가">
+	<img src='../img/loginFailImg.png' alt="나보다 약한자의 말은 듣지 않는다">
 </body>
 </html>
