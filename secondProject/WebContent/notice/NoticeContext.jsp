@@ -10,11 +10,6 @@
 
 <style type="text/css">
 	
-	div{
-		border: 1px solid black;
-		text-align: center;
-	}
-	
 	#wholeDiv{
 		width: 600px;
 		margin: auto;
@@ -26,12 +21,18 @@
 	#firstDiv{
 		width: 600px;
 		margin: auto;
+		border: 1px solid #DAD9FF;;
+		text-align: center;
 
 	}
 	
 	#secondDiv{
 		height: 80px;
 		line-height: 80px;
+		font-size: 30px;
+		font-weight: bold;
+		border: 1px solid #DAD9FF;;
+		text-align: center;
 	}
 	
 	#threeDiv{
@@ -40,11 +41,16 @@
 		font-size: 15px;
 		padding-top: 10px;
 		padding-left: 10px;
+		border: 1px solid #DAD9FF;;
 	}
 	
 	#fourDiv{
 		height: 80px;
 		line-height: 80px;
+		font-size: 20px;
+		font-weight: bold;
+		border: 1px solid #DAD9FF;;
+		text-align: center;
 	}
 	
  	#firstInput{ 
@@ -53,6 +59,7 @@
 		height: 40px;
 		margin-top: 10px;
 		margin-left: 10px;
+		
  	}
  	
  	#secondInput{ 
@@ -78,22 +85,7 @@
 
 </head>
 
-<script type="text/javascript">
-	
-	function pageMoveFnc() {
-		
-		location.href = './list';
-	}
-	
-	function pageDeleteFnc(no) {
-		
-		var url = "./delete?no=" + no;
-		location.href = url;
-	}
-	
-	
-	
-</script>
+
 
 <body>
 
@@ -113,7 +105,7 @@
 					<br>	
 					
 						<p style="float: left;">내용 :</p>
-						<textarea style="width: 500px; height: 240px; float: left; margin-left: 5px;" rows="10" cols="10" name="contents">${requestScope.noticeDto.contents}</textarea>
+						<textarea style="width: 500px; height: 240px; float: left; margin-left: 5px;" rows="10" cols="10" name="contents" onKeyUp="javascript:fnChkByte(this,'90')">${requestScope.noticeDto.contents}</textarea>
 					
 				</c:if>
 				<c:if test="${sessionScope.memberDto.adminCheck eq 'N'}">
@@ -132,10 +124,13 @@
 				관리자
 				</div>
 			</div>
-			<input id="firstInput" type="button" value="뒤로가기" onclick='pageMoveFnc();'>
+			<input id="firstInput" type="button" value="뒤로가기" style="background-color: #FFBB00; color: white;
+				border-radius: 5px;" onclick='pageMoveFnc();'>
 			<c:if test="${sessionScope.memberDto.adminCheck eq 'Y'}">
-				<input id="secondInput" type="button" value="삭제" onclick="pageDeleteFnc(${requestScope.noticeDto.no});">
-				<input id="threeInput" type="submit" value="저장" >
+				<input id="secondInput" type="button" value="삭제" style="background-color: #00D8FF; color: white;
+					border-radius: 5px;" onclick="pageDeleteFnc(${requestScope.noticeDto.no});">
+				<input id="threeInput" type="submit" value="저장" style="background-color: #47C83E; color: white;
+					border-radius: 5px;" >
 			</c:if>
 		</form>
 		
@@ -146,5 +141,70 @@
 	
 	
 </body>
+
+<script type="text/javascript">
+	
+	function pageMoveFnc() {
+		
+		location.href = './list';
+	}
+	
+	function pageDeleteFnc(no) {
+		
+		var url = "./delete?no=" + no;
+		location.href = url;
+	}
+	
+	
+		
+		function fnChkByte(obj, maxByte){
+			
+		    var str = obj.value;
+		    var str_len = str.length;
+
+		    var rbyte = 0;
+		    var rlen = 0;
+		    var one_char = "";
+		    var str2 = "";
+
+
+		    for(var i=0; i<str_len; i++){
+		    	
+		        one_char = str.charAt(i);
+		        
+		        if(escape(one_char).length > 4){
+		        	
+		            rbyte += 2;                                         //한글2Byte
+		        }
+		        else
+		        {
+		            rbyte++;                                            //영문 등 나머지 1Byte
+		        }
+
+
+		        if(rbyte <= maxByte)
+		        {
+		            rlen = i+1;                                          //return할 문자열 갯수
+		        }
+		     }
+
+
+		     if(rbyte > maxByte)
+		     {
+		  alert("한글 "+(maxByte/2)+"자 / 영문 "+maxByte+"자를 초과 입력할 수 없습니다.");
+		  str2 = str.substr(0,rlen);                                  //문자열 자르기
+		  obj.value = str2;
+		  fnChkByte(obj, maxByte);
+		     }
+		     else
+		     {
+		        document.getElementById('byteInfo').innerText = rbyte;
+		     }
+		}
+		
+		
+	
+	
+</script>
 
 </html>

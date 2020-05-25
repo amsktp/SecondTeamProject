@@ -32,33 +32,38 @@
 	
 
 <div id="mainContents" style="margin-top: 40px;">
-	<div>
+	<div style="width: 770px;">
 	
 		<h1>공지사항</h1>
 		
-		<table style="border: 1px solid black; border-collapse: collapse; margin-bottom: 30px; width: 770px;">
-			<tr style="border: 1px solid black;">				
-				<th style="border: 1px solid black; width: 70px;">번호</th>
-				<th style="border: 1px solid black; width: 400px;">제목</th>
-				<th style="border: 1px solid black; width: 100px;">작성자</th>
-				<th style="border: 1px solid black; width: 200px;">작성날짜</th>
+		<table style="border-top: 1px solid white; border-collapse:collapse; margin-bottom: 30px; 
+				width: 770px; text-align: center;">
+			<tr style="height: 40px; color: #4B58E3;">				
+				<th style="width: 70px;">번호</th>
+				<th style="width: 400px;">제목</th>
+				<th style="width: 100px;">작성자</th>
+				<th style="width: 200px;">작성날짜</th>
 			</tr>
 			<c:forEach var="noticeDto" items="${noticeList}">
-			<tr style="border: 1px solid black;">
-				<td style="border: 1px solid black;">${noticeDto.no}</td>
-				<td style="border: 1px solid black;"><a href="./update?no=${noticeDto.no}" style="text-decoration: none; color: black;">${noticeDto.title}</a></td>
+			<tr style="border-top: 1px solid #DAD9FF;">
+				<td style="height: 40px;">${noticeDto.no}</td>
+				<td style="height: 40px;"><a href="./update?no=${noticeDto.no}" style="text-decoration: none; color: black;">${noticeDto.title}</a>
+				</td>
 
-				<td style="border: 1px solid black;">관리자</td>
-				<td style="border: 1px solid black;">${noticeDto.writeDate}</td>
+				<td>관리자</td>
+				<td>${noticeDto.writeDate}</td>
 			</tr>
 			</c:forEach>
 		</table>
 		<div>
-			<input onclick="moveBoardListFnc();" type="button" value="뒤로가기" >
+			<input style="color: white; border-radius: 5px; background-color: #47C83E; height:30px;"
+				onclick="moveBoardListFnc();" type="button" value="뒤로가기" >
 			
 			<c:if test="${sessionScope.memberDto.adminCheck eq 'Y'}">
-				<form action="./add" method="get">
-					<input type="submit" value="글쓰기" style="margin-left: 600px;">
+				<form action="./add" method="get" 
+					style="float: right; width: 100px; text-align: right;">
+					<input type="submit" value="글쓰기" style="color: white; border-radius: 5px;
+							height:30px; background-color: #00D8FF">
 				</form>
 			</c:if>
 		</div>
