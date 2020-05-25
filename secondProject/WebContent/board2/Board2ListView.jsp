@@ -8,6 +8,10 @@
 		border: 1px solid black;
 		border-collapse: collapse;
 	}
+	a:link {text-decoration: none; color: black;}
+	a:visited {text-decoration: none; color: black;}
+	a:active {text-decoration: none; color: black;}
+	a:hover {text-decoration: none; color: blue;}
 </style>
 <head>
 <title>게시판2 목록</title>
@@ -28,7 +32,10 @@
 		
 		<c:forEach var="board2Dto" items="${board2List}">
 			<tr>
-				<td>${board2Dto.bno2}</td><td><a href="./update?bno2=${board2Dto.bno2}">${board2Dto.title2}</a></td><td>${board2Dto.writer2}</td><td>${board2Dto.writeDate2}</td>
+				<td>${board2Dto.bno2}</td>
+				<td><a href="./update?bno2=${board2Dto.bno2}">${board2Dto.title2}</a></td>
+				<td>${board2Dto.writer2}</td>
+				<td>${board2Dto.writeDate2}</td>
 			</tr>
 		</c:forEach>
 	</table>

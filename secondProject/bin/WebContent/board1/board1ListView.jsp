@@ -24,7 +24,11 @@
 </script>
 
 </head>
-
+	<% int pageNo = Integer.parseInt(request.getParameter("pageNo")); 
+	   int startNo = (pageNo-1) * 10;
+	   int endNo = 10 * pageNo;
+		int cnt = 1;
+	%>
 <body>
 
 <jsp:include page="/Header.jsp"/>
@@ -45,7 +49,7 @@
 				<th style="border: 1px solid black; width: 100px;">작성자</th>
 				<th style="border: 1px solid black; width: 200px;">작성날짜</th>
 			</tr>
-			<c:forEach var="board1Dto" items="${board1List}">
+			<c:forEach var="board1Dto" items="${board1List}" begin="<%=startNo%>" end="<%=endNo%>">
 			<tr style="border: 1px solid black;">
 				<td style="border: 1px solid black;">${board1Dto.no}</td>
 				<td style="border: 1px solid black;"><a href="./contents?no=${board1Dto.no}" style="text-decoration: none; color: black;">${board1Dto.title}</a></td>
@@ -54,11 +58,18 @@
 			</tr>
 			</c:forEach>
 		</table>
+
+		<div style="width: 770px; text-align: center;">
+			<c:forEach var="i" begin="1" end="${board1List.size() / 10 +1}">
+				<a href="./list?pageNo=<%=cnt%>">[<%=cnt%>]</a>
+				<%cnt++; %>
+			</c:forEach>
+		</div>		
+
 		<div>
 			<input onclick="moveBoardListFnc();" type="button" value="게시판 목록" >
 			<input onclick="moveBoardWriteFnc();" type="button" value="글쓰기" style="margin-left: 600px;">
 		</div>
-		
 	</div>
 	
 </div>

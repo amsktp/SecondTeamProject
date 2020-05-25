@@ -11,7 +11,7 @@
 	
 	function moveBoard1ListFnc() {
 		
-		location.href = "./list";
+		location.href = "./list?pageNo=1";
 	}
 
 	function moveDeleteFnc() {
