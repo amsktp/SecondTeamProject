@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>게시판 1목록</title>
 
 <script type="text/javascript">
 
@@ -53,8 +53,8 @@
 	class="java.util.ArrayList"
 	type="java.util.ArrayList<spms.dto.Board1Dto>"
 />
-
-<div id="mainContents" style="margin-top: 70px;">
+<h2>게시판1</h2>
+<div id="mainContents" style="margin-top: 30px;">
 	<div>
 		<table style="border: 1px solid black; border-collapse: collapse; margin-bottom: 30px; width: 770px;">
 			<tr style="border: 1px solid black;">				
