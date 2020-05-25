@@ -18,23 +18,23 @@ button{
 }
 a {
 	text-decoration: none;
-	
 }
-
-table,tr,td {
-	border: 1px solid black;
-	border-collapse: collapse;
-	
-}
-
 table {
 	width: 700px;
+    border-collapse: collapse;
 }
-
+th, td {
+    border-top: 1px solid #444444;
+    padding: 10px;
+    border-color: #DAD9FF;
+}
 #trHead {
-	background-color: skyblue;
 	font-weight: bold;
 	font-size: 15px;
+	text-align: center;
+	color: #4B58E3;
+}
+.listBtn {
 	text-align: center;
 }
 </style>
@@ -56,21 +56,26 @@ table {
 		</p>
 		<table>
 			<tr id='trHead'>
-				<td>회원번호</td>
-				<td>회원이름</td>
-				<td>회원이메일</td>
-				<td>가입날짜</td>
-				<td>관리버튼</td>
+				<td style="text-align: left; 
+					border-top: 1px solid white;">회원번호</td>
+				<td style="border-top: 1px solid white;">회원이름</td>
+				<td style="border-top: 1px solid white;">회원이메일</td>
+				<td style="border-top: 1px solid white;">가입날짜</td>
+				<td style="border-top: 1px solid white;">관리버튼</td>
 			</tr>
 			<c:forEach var="memberDto" items="${memberList}">
 				<tr>
 					<td>${memberDto.no}</td>
-					<td>${memberDto.name}</td>
-					<td>${memberDto.email}</td>
-					<td>${memberDto.createDate}</td>
-					<td>
-						<a href='./delete?no=${memberDto.no}'><input type='button' value='삭제'></a>
-						<a href='./update?no=${memberDto.no}'><input type='button' value='수정'></a>
+					<td class="listBtn">${memberDto.name}</td>
+					<td class="listBtn">${memberDto.email}</td>
+					<td class="listBtn">${memberDto.createDate}</td>
+					<td class="listBtn">
+						<a href='./delete?no=${memberDto.no}'>
+							<input type='button' value='삭제'>
+						</a>
+						<a href='./update?no=${memberDto.no}'>
+							<input type='button' value='수정'>
+						</a>
 					</td>
 				</tr>
 			</c:forEach>

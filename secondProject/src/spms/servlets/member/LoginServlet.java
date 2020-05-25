@@ -61,16 +61,19 @@ public class LoginServlet extends HttpServlet {
 			HttpSession session = req.getSession();
 			session.setAttribute("memberDto", memberDto);
 			
-			
 			if(memberDto == null){
 				RequestDispatcher rd = 
 						req.getRequestDispatcher("./LoginFail.jsp");
 				rd.forward(req, res);
+			}else if(memberDto.getAdminCheck().equals("N")) {
+				
+				res.sendRedirect("../notice/list");
+				
+			}else if(memberDto.getAdminCheck().equals("Y")) {
+				
+				res.sendRedirect("../member/list");
 			}
 
-			String adminCheck = memberDto.getAdminCheck();
-
-			res.sendRedirect("../member/list");
 			
 			
 			
