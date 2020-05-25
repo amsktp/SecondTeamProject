@@ -77,7 +77,7 @@
 	
 	function pageMoveFnc() {
 		
-		location.href = './update';
+		location.href = './list';
 	}
 	
 	function sucessFnc() {
@@ -113,11 +113,13 @@
 						<input class="threeDiv" type="text" value="" name="nContents">
 					</div>
 				<div id="fourDiv">
-					작성자: 괸리자
+					작성자: 관리자
 				</div>
 			</div>
-			<input id="firstInput" type="button" value="뒤로가기" onClick='pageMoveFnc();'>
-			<input id="secondInput" type="submit" value="작성완료" >
+			<input id="firstInput" type="button" value="뒤로가기" onClick='pageMoveFnc();' style="border-radius: 5px;
+				background-color: #00D8FF; color: white;" >	
+			<input id="secondInput" type="submit" value="작성완료" style="background-color: #47C83E; color: white;
+				border-radius: 5px;">
 		</form>
 		
 	</div>
