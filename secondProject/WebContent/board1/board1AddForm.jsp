@@ -90,7 +90,7 @@ window.onload = function() {
 					</td>
 					
 					<td>
-						<input id="title" type='text' name='title' style="width: 520px; margin-bottom: 20px;">
+						<input id="title" type='text' name='title' style="width: 505px; margin-bottom: 20px;">
 					</td>
 				</tr>
 

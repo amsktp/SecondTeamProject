@@ -105,7 +105,6 @@
 					제목 : <input class="inputTag" type="text" value="${requestScope.noticeDto.title}"	name="title">
 					<br>
 					<br>	
-					
 						<p style="float: left;">내용 :</p>
 						<textarea style="width: 500px; height: 240px; float: left; margin-left: 5px;" rows="10" cols="10" name="contents" onKeyUp="javascript:fnChkByte(this,'90')">${requestScope.noticeDto.contents}</textarea>
 					
@@ -139,9 +138,6 @@
 	</div>
 	
 	<jsp:include page="/Tail.jsp"></jsp:include>
-
-	
-	
 </body>
 
 <script type="text/javascript">

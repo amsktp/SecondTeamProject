@@ -75,51 +75,45 @@
 
 	<jsp:include page="/Header.jsp"></jsp:include>
 
-	
-
-<div id="mainContents">
-	<div>
-	
-		<h2>공지사항</h2>
-		
-		<table style="border-collapse:collapse; margin-bottom: 20px; text-align: center;">
-			<tr style="color: #4B58E3; font-weight: bold;">				
-				<td style="width: 70px;">번호</td>
-				<td style="width: 400px;">제목</td>
-				<td style="width: 100px;">작성자</td>
-				<td style="width: 200px;">작성날짜</td>
-			</tr>
-			<c:forEach var="noticeDto" items="${noticeList}">
-			<tr style="border-top: 1px solid #DAD9FF;">
-				<td>${noticeDto.no}</td>
-				<td><a href="./update?no=${noticeDto.no}" style="text-decoration: none; color: black;">${noticeDto.title}</a>
-				</td>
-
-				<td>관리자</td>
-				<td>${noticeDto.writeDate}</td>
-			</tr>
-			</c:forEach>
-		</table>
+	<div id="mainContents">
 		<div>
-			<form action="./add" method="get">
 		
-				<input onclick="moveBoardListFnc();" type="button" value="게시판 목록" >
-				
-				<c:if test="${sessionScope.memberDto.adminCheck eq 'Y'}">
-						<input type="submit" value="글쓰기" style="margin-left: 600px;">
-				</c:if>
-			</form>
+			<h2>공지사항</h2>
+			
+			<table style="border-collapse:collapse; margin-bottom: 20px; text-align: center;">
+				<tr style="color: #4B58E3; font-weight: bold;">				
+					<td style="width: 70px;">번호</td>
+					<td style="width: 400px;">제목</td>
+					<td style="width: 100px;">작성자</td>
+					<td style="width: 200px;">작성날짜</td>
+				</tr>
+				<c:forEach var="noticeDto" items="${noticeList}">
+				<tr style="border-top: 1px solid #DAD9FF;">
+					<td>${noticeDto.no}</td>
+					<td><a href="./update?no=${noticeDto.no}" style="text-decoration: none; color: black;">${noticeDto.title}</a>
+					</td>
+	
+					<td>관리자</td>
+					<td>${noticeDto.writeDate}</td>
+				</tr>
+				</c:forEach>
+			</table>
+			<div>
+				<form action="./add" method="get">
+			
+					<input onclick="moveBoardListFnc();" type="button" value="게시판 목록" >
+					
+					<c:if test="${sessionScope.memberDto.adminCheck eq 'Y'}">
+							<input type="submit" value="글쓰기" style="margin-left: 600px;">
+					</c:if>
+				</form>
+			</div>
+			
 		</div>
 		
 	</div>
-	
-</div>
-
-
-	
 
 	<jsp:include page="/Tail.jsp"></jsp:include>
-	
 	
 </body>
 

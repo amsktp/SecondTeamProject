@@ -83,7 +83,7 @@
 					<td style="vertical-align:top">내용:</td><td><textarea onKeyup="len_chk();" rows="20px" cols="70px" name='contents2' style="vertical-align: top;">${board2Dto.contents2}</textarea></td>
 				</tr>
 				<tr>
-					<td>글자수:</td><td><input id='lenInput' type='text' value=''></td>
+					<td>글자수:</td><td><input id='lenInput' type='text' value='' readonly="readonly"></td>
 				</tr>
 			 	<tr>
 			 		<td><input class='inputLikeButton' type='button' value='삭제' onclick='pageMoveDeleteFnc(${board2Dto.bno2});'></td>

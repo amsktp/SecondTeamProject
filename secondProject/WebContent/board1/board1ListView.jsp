@@ -55,14 +55,17 @@
 	}
 	
 	function focusOutFnc(tdObj) {
-		tdObj.parentNode.style.backgroundColor = 'white';	
-		tdObj.style.color = 'black';
+		tdObj.parentNode.parentNode.style.backgroundColor = 'white';
+		
+		tdObj.parentNode.parentNode.style.color = 'black';
+		
 	}
 	
 	function focusOverFnc(tdObj) {
 			
-		tdObj.parentNode.style.backgroundColor = 'skyblue';
-		tdObj.style.color = 'white';
+		tdObj.parentNode.parentNode.style.backgroundColor = 'skyblue';
+		
+		tdObj.parentNode.parentNode.style.color = 'white';
 	}
 
 </script>
@@ -111,7 +114,13 @@
 			<c:forEach var="board1Dto" items="${board1List}" begin="<%=startNo%>" end="<%=endNo%>">
 			<tr>
 				<td>${board1Dto.no}</td>
-				<td><a onmouseover="focusOverFnc(this);" onmouseleave="focusOutFnc(this);" href="./contents?no=${board1Dto.no}" style="text-decoration: none; color: black;">${board1Dto.title}</a></td>
+				<td>
+					<a onmouseover="focusOverFnc(this);" onmouseleave="focusOutFnc(this);" href="./contents?no=${board1Dto.no}" style="text-decoration: none; color: black;">
+						
+						${board1Dto.title}
+						
+					</a>
+				</td>
 				<td>${board1Dto.writer}</td>
 				<td>${board1Dto.writeDate}</td>
 			</tr>

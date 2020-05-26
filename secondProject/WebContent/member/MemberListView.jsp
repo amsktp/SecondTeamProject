@@ -54,7 +54,8 @@ th, td {
 		<p>
 			
 			<input type="button" onclick="location.href = './add'" value="신규회원" style="border: none;
-			background-color: rgb(255,243,235); border-radius: 4px; width:100px; height: 30px; color: black; font-weight: bold;">
+			background-color: rgb(255,243,235); border-radius: 4px; width:100px; height: 30px; 
+			color: black; font-weight: bold; cursor: pointer;">
 			
 		</p>
 		<table>
@@ -82,28 +83,36 @@ th, td {
 					</td>
 				</tr>
 			</c:forEach>
-			
 		</table>
-		
 	</c:if>
 	
 	<br>
-			<a href="<%=request.getContextPath()%>/board1/list?pageNo=1" style="margin-right: 50px; text-decoration: none;">
-				<input type="button" value="게시판1" 
-					style="border: none; background-color: #5CB85C; color: white; 
-					width: 200px; height: 50px; border-radius: 7px; margin-top: 10px;" >
-			</a>
-			<a href="<%=request.getContextPath()%>/board2/list" style="margin-right: 50px; text-decoration: none;">
-				<input type="button" value="게시판2"
-					style="border: none; background-color: #5BC0DE; color: white;
-					 width: 200px; height: 50px;  border-radius: 7px;">
-			</a>
-			<a href="<%=request.getContextPath()%>/notice/list" text-decoration: none;>
-				<input type="button" value="공지사항" 
-					style="border: none; background-color: #F0AD4E; color: white; 
-					width: 200px; height: 50px; border-radius: 7px;">
-			</a>
+	
+		<c:if test="${sessionScope.memberDto.adminCheck eq 'N'}">
+				
+			<div>
+				<img onclick="listPageMoveFnc();" alt="아구몬 안녕" src="<%=request.getContextPath()%>/img/agumon.png">
+			</div>
+				
+		</c:if>	
+	
+		<a href="<%=request.getContextPath()%>/board1/list?pageNo=1" style="margin-right: 50px; text-decoration: none;">
+			<input type="button" value="게시판1" 
+				style="border: none; background-color: #5CB85C; color: white; 
+				width: 200px; height: 50px; border-radius: 7px; margin-top: 10px; cursor: pointer;" >
+		</a>
+		<a href="<%=request.getContextPath()%>/board2/list" style="margin-right: 50px; text-decoration: none;">
+			<input type="button" value="게시판2"
+				style="border: none; background-color: #5BC0DE; color: white;
+				 width: 200px; height: 50px;  border-radius: 7px; cursor: pointer;">
+		</a>
+		<a href="<%=request.getContextPath()%>/notice/list" text-decoration: none;>
+			<input type="button" value="공지사항" 
+				style="border: none; background-color: #F0AD4E; color: white; 
+				width: 200px; height: 50px; border-radius: 7px; cursor: pointer;">
+		</a>
 			
 	<jsp:include page="/Tail.jsp" />
+	
 </body>
 </html>
